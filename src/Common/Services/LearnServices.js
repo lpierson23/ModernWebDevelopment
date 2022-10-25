@@ -145,13 +145,12 @@ export const getUser = (id) => {
 // Create operation for users
 export const createUser = (username, email, password) => {
   console.log("Creating: ", username);
-  const Item = Parse.Object.extend("Users");
-  const item = new Item();
+  const user = new Parse.User();
   // using setter to UPDATE the object
-  item.set("userame", username);
-  item.set("email", email);
-  item.set("password", password)
-  return item.save().then((result) => {
+  user.set("userame", username);
+  user.set("email", email);
+  user.set("password", password)
+  return user.signUp().then((result) => {
     // returns new Lesson object
     return result;
   });
