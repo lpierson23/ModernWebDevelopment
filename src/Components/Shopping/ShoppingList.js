@@ -93,6 +93,7 @@ const ShoppingList = () => {
       <div>
         <hr />
         <h3>Shopping List</h3>
+        {/* prints all items from Groceries database */}
         {items.length > 0 && (
           <ul>
             {items.map((item) => (

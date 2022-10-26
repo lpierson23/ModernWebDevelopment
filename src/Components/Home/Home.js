@@ -12,6 +12,7 @@ const Home = () => {
           Use the links above to add a meal request, add items to your shopping
           list, and view your calendar of meals.
         </p>
+        {/* need to fix image display */}
         {/* <img src= plates.jpg width="300" height="150" /> */}
       </div>
     );

@@ -5,7 +5,7 @@ const Calendar = () => {
     return (
       <div>
         <h1>Meal Calendar</h1>
-        {/* <!-- TODO: replace hard-coded values with data from json -->
+        {/* <!-- TODO: replace hard-coded values with data -->
       <!-- would like to make this table span the whole month eventually--> */}
         <table className="center">
           <tbody>

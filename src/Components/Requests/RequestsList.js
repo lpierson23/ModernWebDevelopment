@@ -7,6 +7,7 @@ import {
 import RequestsForm from "./RequestsForm";
 
 /* STATEFUL PARENT COMPONENT */
+/* Initializes meal item */
 const RequestsList = () => {
   const [newMeal, setNewMeal] = useState({
     mealName: "",
@@ -91,11 +92,11 @@ const RequestsList = () => {
         onClick={onClickHandler}
         onChange={onChangeHandler}
         meal={newMeal}
-        // onQuantityChange={onChangeHandler}
       />
       <div>
         <hr />
         <h3>Requests List</h3>
+        {/* prints list of meal requests taken from database */}
         {meals.length > 0 && (
           <ul>
             {meals.map((meal) => (
