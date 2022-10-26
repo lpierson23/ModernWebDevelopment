@@ -8,24 +8,31 @@ const ShoppingForm = ({ onChange, onClick }) => {
         <p>Please fill in this form to add a grocery item to your list.</p>
         <hr />
 
+        <label htmlFor="itemName">
+          <b>Grocery Item</b>
+        </label>
         <input
           type="text"
           onChange={onChange}
           placeholder="Enter Grocery Item"
-          name="item_name"
-          id="item_name"
-          //value={state.item_name}
+          name="itemName"
+          id="itemName"
+          //value={state.itemName}
           required
         />
 
         <br />
         <br />
 
+        <label htmlFor="quantity">
+          <b>Quantity</b>
+        </label>
         <select
           name="quantity"
           id="quantity"
           //value={state.quantity}
           onChange={onChange}
+          required
         >
           <option value="1">1</option>
           <option value="2">2</option>

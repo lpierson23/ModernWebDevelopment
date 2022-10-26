@@ -3,7 +3,7 @@ import {
   getAllMeals,
   createMeal,
   removeMeal
-} from "/src/Common/Services/LearnServices";
+} from "../../Common/Services/LearnServices";
 import RequestsForm from "./RequestsForm";
 
 /* STATEFUL PARENT COMPONENT */
@@ -31,6 +31,7 @@ const RequestsList = () => {
 
   useEffect(() => {
     if (newMeal && add) {
+      console.log("about to create meal");
       createMeal(newMeal).then((mealCreated) => {
         if (mealCreated) {
           alert(`${mealCreated.get("mealName")} successfully added to list!`);

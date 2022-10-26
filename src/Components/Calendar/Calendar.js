@@ -1,4 +1,4 @@
-/*import React from "react";*/
+import React from "react";
 // import CalendarList from "./CalendarList.js";
 
 const Calendar = () => {
@@ -7,7 +7,7 @@ const Calendar = () => {
         <h1>Meal Calendar</h1>
         {/* <!-- TODO: replace hard-coded values with data from json -->
       <!-- would like to make this table span the whole month eventually--> */}
-        <table class="center">
+        <table className="center">
           <tr>
             <th>Sunday</th>
             <th>Monday</th>

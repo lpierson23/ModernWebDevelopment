@@ -13,13 +13,13 @@ export const getAllGroceries = () => {
 };
 
 // Create operation for groceries
-export const createItem = (itemName, Quantity) => {
-  console.log("Creating: ", itemName);
+export const createItem = (newItem) => {
+  console.log("Creating: ", newItem);
   const Item = Parse.Object.extend("Groceries");
   const item = new Item();
   // using setter to UPDATE the object
-  item.set("item_name", itemName);
-  item.set("quantity", Quantity);
+  item.set("itemName", newItem.itemName);
+  item.set("quantity", newItem.quantity);
   return item.save().then((result) => {
     // returns new Lesson object
     return result;
@@ -47,14 +47,14 @@ export const getAllMeals = () => {
 };
 
 // Create operation for meals
-export const createMeals = (mealName, servings, recipe) => {
-  console.log("Creating: ", mealName);
+export const createMeal = (newMeal) => {
+  console.log("Creating: ", newMeal.mealName);
   const Item = Parse.Object.extend("Meals");
   const item = new Item();
   // using setter to UPDATE the object
-  item.set("mealName", mealName);
-  item.set("servings", servings);
-  item.set("recipe", recipe)
+  item.set("mealName", newMeal.mealName);
+  item.set("servings", newMeal.servings);
+  item.set("recipe", newMeal.recipe)
   return item.save().then((result) => {
     // returns new Lesson object
     return result;
@@ -99,13 +99,13 @@ export const getCurrentWeek = () => {
 };
 
 // Create operation for calendar
-export const createDate = (date, meal) => {
-  console.log("Creating: ", date);
+export const createDate = (newDate) => {
+  console.log("Creating: ", newDate.date);
   const Item = Parse.Object.extend("Calendar");
   const item = new Item();
   // using setter to UPDATE the object
-  item.set("date", date);
-  item.set("meal", meal);
+  item.set("date", newDate.date);
+  item.set("meal", newDate.meal);
   return item.save().then((result) => {
     // returns new Lesson object
     return result;
@@ -143,13 +143,13 @@ export const getUser = (id) => {
 };
 
 // Create operation for users
-export const createUser = (username, email, password) => {
-  console.log("Creating: ", username);
+export const createUser = (newUser) => {
+  console.log("Creating: ", newUser.username);
   const user = new Parse.User();
   // using setter to UPDATE the object
-  user.set("userame", username);
-  user.set("email", email);
-  user.set("password", password)
+  user.set("userame", newUser.username);
+  user.set("email", newUser.email);
+  user.set("password", newUser.password)
   return user.signUp().then((result) => {
     // returns new Lesson object
     return result;

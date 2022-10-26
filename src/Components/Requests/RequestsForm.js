@@ -8,47 +8,47 @@ const RequestsForm = ({ meal, onChange, onClick }) => {
         <p>Please fill in this form to add a meal to the request list.</p>
         <hr />
         <div>
-          <label for="name">
+          <label htmlFor="mealName">
             <b>Meal name</b>
           </label>
           <input
             type="text"
             onChange={onChange}
-            value={meal.mealName}
+            //value={meal.mealName}
             placeholder="Enter Meal Name"
-            name="name"
-            id="name"
+            name="mealName"
+            id="mealName"
             required
           />
 
           <br />
           <br />
 
-          <label for="serv">
+          <label htmlFor="servings">
             <b>Servings</b>
           </label>
           <input
             type="text"
             onChange={onChange}
-            value={meal.servings}
+            //value={meal.servings}
             placeholder="Enter Servings"
-            name="serv"
-            id="serv"
+            name="servings"
+            id="servings"
             required
           />
 
           <br />
           <br />
 
-          <label for="recipe">
+          <label htmlFor="recipe">
             <b>Recipe</b>
           </label>
           <input
             type="file"
             onChange={onChange}
-            value={meal.recipe}
+            //value={meal.recipe}
             placeholder="Upload File"
-            name="recipe-file"
+            name="recipe"
             id="recipe"
           />
 

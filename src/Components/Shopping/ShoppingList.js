@@ -10,7 +10,7 @@ import ShoppingForm from "./ShoppingForm";
 const ShoppingList = () => {
   const [newItem, setNewItem] = useState({
     itemName: "",
-    quantity: ""
+    quantity: "1"
   });
 
   // Variables in the state to hold data
@@ -32,7 +32,11 @@ const ShoppingList = () => {
     if (newItem && add) {
       createItem(newItem).then((itemCreated) => {
         if (itemCreated) {
-          alert(`${itemCreated.get("itemName")} successfully added to list!`);
+          alert(
+            `${itemCreated.get("itemName")} ${itemCreated.get(
+              "quantity"
+            )} successfully added to list!`
+          );
         }
         // TODO: redirect user to main app
         setAdd(false);
