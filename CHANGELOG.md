@@ -7,9 +7,11 @@
     - getting all, creating, and deleting meals
     - getting all, getting by week, creating, and deleting calendar date/meal pairings
     - getting all, getting one, creating, and deleting users
+- Chnage and Click Handlers for all necessary classes
 
 ### Changed
-
+- Routing
+    - updated routing using Link 
 
 ### Removed
 - JSON psuedo database
