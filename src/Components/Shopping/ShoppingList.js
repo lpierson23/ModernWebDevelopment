@@ -3,7 +3,7 @@ import {
   getAllGroceries,
   createItem,
   removeItem
-} from "/src/Common/Services/LearnServices";
+} from "../../Common/Services/LearnServices";
 import ShoppingForm from "./ShoppingForm";
 
 /* STATEFUL PARENT COMPONENT */
