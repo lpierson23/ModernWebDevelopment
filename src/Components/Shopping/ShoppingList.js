@@ -26,17 +26,13 @@ const ShoppingList = () => {
       console.log("items: ", results);
       setItems(results);
     });
-  }, []);
+  }, [items]);
 
   useEffect(() => {
     if (newItem && add) {
       createItem(newItem).then((itemCreated) => {
         if (itemCreated) {
-          alert(
-            `${itemCreated.get("itemName")} ${itemCreated.get(
-              "quantity"
-            )} successfully added to list!`
-          );
+          alert(`${itemCreated.get("itemName")} successfully added to list!`);
         }
         // TODO: redirect user to main app
         setAdd(false);

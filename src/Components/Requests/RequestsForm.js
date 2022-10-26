@@ -1,7 +1,7 @@
 import React from "react";
 
 /* STATELESS CHILD COMPONENT */
-const RequestsForm = ({ meal, onChange, onClick }) => {
+const RequestsForm = ({ onChange, onClick }) => {
   return (
     <div>
       <form>
@@ -52,7 +52,7 @@ const RequestsForm = ({ meal, onChange, onClick }) => {
             id="recipe"
           />
 
-          <button type="submit">Submit</button>
+          <button type="submit" onClick={onClick}>Submit</button>
         </div>
       </form>
     </div>

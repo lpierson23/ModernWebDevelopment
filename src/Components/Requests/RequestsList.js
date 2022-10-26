@@ -11,7 +11,7 @@ const RequestsList = () => {
   const [newMeal, setNewMeal] = useState({
     mealName: "",
     servings: "",
-    recipe: ""
+    recipe: undefined
   });
 
   // Variables in the state to hold data
@@ -27,9 +27,10 @@ const RequestsList = () => {
       console.log("meals: ", results);
       setMeals(results);
     });
-  }, []);
+  }, [meals]);
 
   useEffect(() => {
+    console.log("in useEffect");
     if (newMeal && add) {
       console.log("about to create meal");
       createMeal(newMeal).then((mealCreated) => {
