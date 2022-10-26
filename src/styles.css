@@ -32,6 +32,35 @@ ul {
   list-style-type: none;
 }
 
+/* this css styles the calendar table */
+table,
+th,
+td {
+  border: 1px solid;
+  border-color: #ffffff;
+  text-align: center;
+  padding: 2px;
+  font-family: "Montserrat", sans-serif;
+}
+
+th {
+  background-color: #bcd3dd;
+}
+
+td {
+  color: #ffffff;
+}
+
+table {
+  background-color: #152039;
+}
+
+/* centers the table in the middle of the page */
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .navigation {
   /* flexbox styles */
   display: flex;
