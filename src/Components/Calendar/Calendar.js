@@ -1,6 +1,6 @@
 import React from "react";
 // import CalendarList from "./CalendarList.js";
-import NavBar from "./NavBar/NavBar.js";
+import NavBar from "../NavBar/NavBar.js";
 
 const Calendar = () => {
     return (
