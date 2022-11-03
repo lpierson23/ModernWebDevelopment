@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { checkUser, loginUser } from "./AuthService";
+import { checkUser, loginUser } from "./AuthService.js";
 import AuthForm from "./AuthForm";
 import { useNavigate } from "react-router-dom";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import RequestsList from "./RequestsList.js";
-import NavBar from "./NavBar/NavBar.js";
+import NavBar from "../NavBar/NavBar.js";
 
 const Requests = () => {
     return (

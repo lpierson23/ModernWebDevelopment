@@ -1,6 +1,6 @@
 import React from "react";
 import ShoppingList from "./ShoppingList.js";
-import NavBar from "./NavBar/NavBar.js";
+import NavBar from "../NavBar/NavBar.js";
 
 const Shopping = () => {
   return (
