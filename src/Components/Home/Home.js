@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "./NavBar/NavBar.js";
+// import NavBar from "./NavBar/NavBar.js";
 import AuthModule from "../Auth/Auth.js";
 
 const Home = () => {
