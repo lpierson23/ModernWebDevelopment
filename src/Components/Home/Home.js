@@ -1,4 +1,5 @@
 import React from "react";
+import NavBar from "./NavBar/NavBar.js";
 import AuthModule from "../Auth/Auth.js";
 
 const Home = () => {
@@ -9,12 +10,10 @@ const Home = () => {
   
         <h3>You can use this website to plan out meals with your roommates!</h3>
         <p>
-          After logging in or registering as a new user, you have access to add a meal request, add items to your shopping
+          Use the links above to add a meal request, add items to your shopping
           list, and view your calendar of meals.
         </p>
-        {/* need to fix image display */}
         {/* <img src= plates.jpg width="300" height="150" /> */}
-        <AuthModule />
       </div>
     );
   };

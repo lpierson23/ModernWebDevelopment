@@ -1,9 +1,11 @@
 import React from "react";
 // import CalendarList from "./CalendarList.js";
+import NavBar from "./NavBar/NavBar.js";
 
 const Calendar = () => {
     return (
       <div>
+        <NavBar />
         <h1>Meal Calendar</h1>
         {/* <!-- TODO: replace hard-coded values with data -->
       <!-- would like to make this table span the whole month eventually--> */}
