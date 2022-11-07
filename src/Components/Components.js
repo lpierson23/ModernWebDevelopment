@@ -12,31 +12,31 @@ export default function Components() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/auth/register" element={<AuthRegister />} />
-        <Route path="/auth/login" element={<AuthLogin />} />
-        {/* <Route 
+        <Route path="/auth" element={<AuthModule />} />
+        <Route path="/auth/register" element={<AuthLogin />} />
+        <Route path="/auth/login" element={<AuthRegister />} />
+        <Route 
           path="/" 
           element={
-            <ProtectedRoute path="/" element={<Home />} />
+            <ProtectedRoute path="/" element={Home} />
           }
         /> */}
         <Route 
           path="/shopping" 
           element={
-            <ProtectedRoute path="/shopping" element={<Shopping />} />
+            <ProtectedRoute path="/shopping" element={Shopping} />
           }
         />
         <Route 
           path="/requests" 
           element={
-            <ProtectedRoute path="/requests" element={<Requests />} />
+            <ProtectedRoute path="/requests" element={Requests} />
           }
         />
         <Route 
           path="/calendar" 
           element={
-            <ProtectedRoute path="/calendar" element={<Calendar />} />
+            <ProtectedRoute path="/calendar" element={Calendar} />
           }
         />
       </Routes>
