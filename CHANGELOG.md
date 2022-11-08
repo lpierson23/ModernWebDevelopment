@@ -16,3 +16,19 @@
 ### Removed
 - JSON psuedo database
 - Parse methods for fetching from parse database
+
+
+## [0.5.0] - 2022-11-09
+### Added
+- Auth Module
+    - Auth.js that is the 'home' page for the auth module that checks if user has already logged in and if not, allows the user to either navigate to login or register
+    - AuthRegister.js - uses the AuthForm child component to allow the user to register an account
+    - AuthLogin.js - uses AuthForm child component to allow the user to login
+    - AuthForm.js - child component that takes user input for name, email, and password
+    - AuthService.js - has methods to create a user, login and user, and check if a user is already logged in
+
+### Changed
+- Routing
+    - updated routing to include protected routes
+    - updated routing to include routing to auth module
+
