@@ -13,6 +13,7 @@ export default function Components() {
     <Router>
       <Routes>
         <Route path="/auth" element={<AuthModule />} />
+        {/* There was an error in differentiation between registration and log in so this was the makeshift solution */}
         <Route path="/auth/register" element={<AuthLogin />} />
         <Route path="/auth/login" element={<AuthRegister />} />
         <Route 
@@ -20,7 +21,7 @@ export default function Components() {
           element={
             <ProtectedRoute path="/" element={Home} />
           }
-        /> */}
+        />
         <Route 
           path="/shopping" 
           element={

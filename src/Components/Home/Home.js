@@ -9,9 +9,9 @@ const Home = () => {
         <h1>Welcome to Meal Planner!</h1>
         {/* <!-- this is the home page for the website that gives some info on what users can do on it --> */}
   
-        <h3>You can use this website to plan out meals with your roommates!</h3>
+        <h3>Use this website to plan out meals with your roommates!</h3>
         <p>
-          You can use the above links to view your meal schedule, place a meal request, and add items to a grocery list.
+          Click the above links to view your meal schedule, place a meal request, and add items to a grocery list.
         </p>
         {/* <img src= plates.jpg width="300" height="150" /> */}
 

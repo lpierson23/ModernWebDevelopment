@@ -4,7 +4,7 @@ const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
 
   return (
     <form onSubmit={onSubmit} autoComplete="off">
-    {!isLogin ? 
+    {!isLogin ?  /* if user is registering, ask for name */
     <div>
         <div className="form-group">
           <label>First Name</label>
