@@ -16,6 +16,8 @@ const AuthModule = () => {
 
   return (
     <div>
+      <h1>Meal Planner</h1>
+      <h3>Please login or register to continue</h3>
       <Link to="/auth/register">
         <button>Register as a New User</button>
       </Link>

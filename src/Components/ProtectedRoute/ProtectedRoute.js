@@ -14,7 +14,9 @@ const ProtectedRoute = ({ element: Component, ...rest }) => {
   } else {
     return (
       <div>
-        <p>Unauthorized!</p> <button onClick={goBackHandler}>Go Back.</button>
+        <h1>Meal Planner</h1>
+        <h3>Please return to home page to login</h3>
+        <button onClick={goBackHandler}>Go to Home Page</button>
       </div>
     );
   }

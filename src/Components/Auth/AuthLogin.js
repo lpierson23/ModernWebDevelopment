@@ -58,6 +58,7 @@ const AuthLogin = () => {
 
   return (
     <div>
+      <h1>Meal Planner Login</h1>
       <AuthForm
         user={currentUser}
         isLogin={true}
