@@ -101,8 +101,7 @@ const RequestsList = () => {
           <ul>
             {meals.map((meal) => (
               <li key={meal.id}>
-                {meal.get("mealName")} (servings: {meal.get("servings")}),{" "}
-                {meal.get("recipe")}
+                <a href={meal.get("url")} target="_blank" rel="noopener noreferrer">{meal.get("mealName")}</a> (servings: {meal.get("servings")})
               </li>
             ))}
           </ul>

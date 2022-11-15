@@ -43,9 +43,9 @@ const RequestsForm = ({ onChange, onClick }) => {
             <b>Recipe</b>
           </label>
           <input
-            type="file"
+            type="url"
             onChange={onChange}
-            placeholder="Upload File"
+            placeholder="Enter url"
             name="recipe"
             id="recipe"
           />

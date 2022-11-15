@@ -54,7 +54,7 @@ export const createMeal = (newMeal) => {
   // using setter to UPDATE the object
   item.set("mealName", newMeal.mealName);
   item.set("servings", Number(newMeal.servings));
-  item.set("recipe", newMeal.recipe)
+  item.set("url", newMeal.recipe)
   return item.save().then((result) => {
     // returns new Lesson object
     return result;
