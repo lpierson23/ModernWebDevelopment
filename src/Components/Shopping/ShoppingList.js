@@ -1,3 +1,4 @@
+import { User } from "parse";
 import React, { useEffect, useState } from "react";
 import {
   getAllGroceries,
@@ -97,9 +98,9 @@ const ShoppingList = () => {
         {items.length > 0 && (
           <ul>
             {items.map((item) => (
-              <li key={item.id}>
-                {item.get("itemName")} ({item.get("quantity")})
-              </li>
+              <li key={item.id}> 
+              {item.get("itemName")} 
+              ({item.get("quantity")}) </li>
             ))}
           </ul>
         )}

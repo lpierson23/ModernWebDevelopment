@@ -10,7 +10,7 @@ const RequestsForm = ({ onChange, onClick }) => {
         <hr />
         <div>
           <label htmlFor="mealName">
-            <b>Meal name</b>
+            <b>Meal name </b>
           </label>
           <input
             type="text"
@@ -25,7 +25,7 @@ const RequestsForm = ({ onChange, onClick }) => {
           <br />
 
           <label htmlFor="servings">
-            <b>Servings</b>
+            <b>Servings </b>
           </label>
           <input
             type="text"
@@ -39,16 +39,19 @@ const RequestsForm = ({ onChange, onClick }) => {
           <br />
           <br />
 
-          <label htmlFor="recipe">
-            <b>Recipe</b>
+          <label htmlFor="url">
+            <b>Recipe </b>
           </label>
           <input
-            type="file"
+            type="text"
             onChange={onChange}
-            placeholder="Upload File"
-            name="recipe"
-            id="recipe"
+            placeholder="Recipe URL"
+            name="url"
+            id="url"
           />
+          
+          <br />
+          <br />
 
           <button type="submit" onClick={onClick}>Submit</button>
         </div>

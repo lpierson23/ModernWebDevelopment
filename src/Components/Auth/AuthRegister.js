@@ -9,6 +9,7 @@ const AuthRegister = () => {
   const [newUser, setNewUser] = useState({
     firstName: "",
     lastName: "",
+    household: "",
     email: "",
     password: ""
   });
@@ -62,6 +63,7 @@ const AuthRegister = () => {
   return (
     <div>
       <h1>Meal Planner Registration</h1>
+      <h3>Household name refers to a previously created group or insert a new household name to create a new group</h3>
       <AuthForm
         user={newUser}
         onChange={onChangeHandler}

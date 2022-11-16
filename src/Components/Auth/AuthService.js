@@ -7,6 +7,7 @@ export const createUser = (newUser) => {
   user.set("username", newUser.email);
   user.set("firstName", newUser.firstName);
   user.set("lastName", newUser.lastName);
+  user.set("household", newUser.household);
   user.set("password", newUser.password);
   user.set("email", newUser.email);
 

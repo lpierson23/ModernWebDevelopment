@@ -7,7 +7,7 @@ const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
     {!isLogin ?  /* if user is registering, ask for name */
     <div>
         <div className="form-group">
-          <label>First Name</label>
+          <label>First Name </label>
           <br />
           <input
             type="text"
@@ -21,7 +21,7 @@ const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
           />
         </div>
         <div className="form-group">
-          <label>Last Name</label>
+          <label>Last Name </label>
           <br />
           <input
             type="text"
@@ -32,11 +32,25 @@ const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
             name="lastName"
             required
           />
+        </div>
+        <div className="form-group">
+          <label>Household Name </label>
+          <br />
+          <input
+            type="text"
+            className="form-control"
+            id="household-input"
+            value={user.household}
+            onChange={onChange}
+            name="household"
+            placeholder="household"
+            required
+          />
         </div>{" "}
         </div> : <></>}
         <div>
         <div className="form-group">
-          <label>Email</label>
+          <label>Email </label>
           <br />
           <input
             type="email"
@@ -49,7 +63,7 @@ const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
           />
         </div>{" "}
         <div className="form-group">
-          <label>Password</label>
+          <label>Password </label>
           <br />
           <input
             type="password"

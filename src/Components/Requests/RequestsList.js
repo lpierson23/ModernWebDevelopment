@@ -12,7 +12,7 @@ const RequestsList = () => {
   const [newMeal, setNewMeal] = useState({
     mealName: "",
     servings: "",
-    recipe: undefined
+    url: ""
   });
 
   // Variables in the state to hold data
@@ -102,7 +102,7 @@ const RequestsList = () => {
             {meals.map((meal) => (
               <li key={meal.id}>
                 {meal.get("mealName")} (servings: {meal.get("servings")}),{" "}
-                {meal.get("recipe")}
+                {meal.get("url")}
               </li>
             ))}
           </ul>
