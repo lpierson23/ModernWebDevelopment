@@ -46,6 +46,16 @@ export const getAllMeals = () => {
   });
 };
 
+export const getMealById = (id) => {
+  const Item = Parse.Object.extend("Meals");
+  const query = new Parse.Query(Item);
+  return query.get(id).then((object) => {
+    // returns array of item objects
+    console.log("meal: ", object);
+    return object;
+  });
+};
+
 // Create operation for meals
 export const createMeal = (newMeal) => {
   console.log("Creating: ", newMeal.mealName);

@@ -1,6 +1,8 @@
 import Shopping from "./Shopping/Shopping.js";
 import Requests from "./Requests/Requests.js";
 import Calendar from "./Calendar/Calendar.js";
+import RecipeBook from "./RecipeBook/RecipeBook.js";
+import RecipeBookSelected from "./RecipeBook/RecipeBookSelected.js";
 import Home from "./Home/Home.js";
 import AuthModule from "./Auth/Auth.js";
 import AuthLogin from "./Auth/AuthRegister.js";
@@ -38,6 +40,18 @@ export default function Components() {
           path="/calendar" 
           element={
             <ProtectedRoute path="/calendar" element={Calendar} />
+          }
+        />
+        <Route 
+          path="/recipebook" 
+          element={
+            <ProtectedRoute path="/recipebook" element={RecipeBook} />
+          }
+        />
+        <Route 
+          path="/recipebook/:mealId" 
+          element={
+            <ProtectedRoute path="/recipebook/:mealId" element={RecipeBookSelected} />
           }
         />
       </Routes>
