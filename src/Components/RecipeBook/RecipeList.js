@@ -19,7 +19,7 @@ const RecipeList = () => {
             <ul className="recipe-sidebar-list">
                 <li className="recipe-sidebar-title">Recipes</li>
                 {recipes.map((recipe) => (
-                <li key={recipe.id} className="recipe-sidebar-item">
+                <li key={recipe.id} onClick={() => window.location.reload(false)} className="recipe-sidebar-item">
                     <Link to={"/recipebook/" + recipe.id} className="recipe-sidebar-link">{recipe.get("mealName")}</Link>
                 </li>
                 ))}

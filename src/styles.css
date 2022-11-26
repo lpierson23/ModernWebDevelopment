@@ -141,6 +141,22 @@ table {
   color: white;
 }
 
+.recipe {
+  margin: 0px 20px 0px 20px;
+}
+
+.recipe-heading {
+  font-family: "Montserrat", sans-serif;
+  color: #152039;
+  background-color: #ffffff;
+  text-align: left;
+  margin: 0;
+}
+
+.recipe-text {
+  text-align: left;
+}
+
 /* media query styles are only applied if the conditions are met */
 @media all and (max-width: 800px) {
   .navigation {

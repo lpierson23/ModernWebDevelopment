@@ -16,16 +16,17 @@ const RecipeView = ({ mealId }) => {
     }, []);
 
     return (
-        <div>
+        <div className="recipe">
             {!meal.attributes && (
                 <div> Please select a meal </div>
             )}
             {meal.attributes && (
                 <div>
-                    <h3 className="recipe-heading"> {meal.attributes.mealName} </h3>
-                    <p className="recipe-servings"> Servings: {meal.attributes.servings} </p>
+                    <h2 className="recipe-heading"> {meal.attributes.mealName} </h2>
+                    <p className="recipe-text"> Servings: {meal.attributes.servings} </p>
                     <Comments mealId={mealId} />
-                    <iframe src={meal.attributes.url} width="100%" height="400px" title="Recipe"></iframe>
+                    {meal.attributes.url && (<iframe src={meal.attributes.url} width="100%" height="400px" title="Recipe"></iframe>)}
+                    {!meal.attributes.url && (<p className="recipe-text">No recipe given</p>)}
                     <CommentsForm mealId={mealId} />
                 </div>
             )}
