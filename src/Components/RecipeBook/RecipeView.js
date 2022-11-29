@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getMealById } from "./../../Common/Services/LearnServices.js";
 import Comments from "./Comments.js";
-import CommentsForm from "./CommentsForm.js";
 
 const RecipeView = ({ mealId }) => {
     const [meal, setMeal] = useState({});
@@ -24,10 +23,12 @@ const RecipeView = ({ mealId }) => {
                 <div>
                     <h2 className="recipe-heading"> {meal.attributes.mealName} </h2>
                     <p className="recipe-text"> Servings: {meal.attributes.servings} </p>
-                    <Comments mealId={mealId} />
-                    {meal.attributes.url && (<iframe src={meal.attributes.url} width="100%" height="400px" title="Recipe"></iframe>)}
+                    {/* TODO: fix errors with iframe */}
+                    {/* {meal.attributes.url && (<iframe src={meal.attributes.url} width="50%" height="400px" title="Recipe"></iframe>)} */}
                     {!meal.attributes.url && (<p className="recipe-text">No recipe given</p>)}
-                    <CommentsForm mealId={mealId} />
+                    <br />
+                    <br />
+                    <Comments mealId={mealId} />
                 </div>
             )}
         </div>

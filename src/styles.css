@@ -157,6 +157,33 @@ table {
   text-align: left;
 }
 
+.comments-form {
+  text-align: left;
+}
+
+.comments-form-text {
+  font-family: "Montserrat", sans-serif;
+  color: #152039;
+  text-align: left;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.comments-text {
+  font-family: "Montserrat", sans-serif;
+  color: #152039;
+  text-align: left;
+}
+
+.comments-list {
+  margin-top: 0px;
+  margin-bottom: 16px;
+}
+
+.rating { 
+  margin: 5px;
+}
+
 /* media query styles are only applied if the conditions are met */
 @media all and (max-width: 800px) {
   .navigation {
