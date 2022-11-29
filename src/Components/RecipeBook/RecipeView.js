@@ -8,8 +8,8 @@ const RecipeView = ({ mealId }) => {
     useEffect(() => {
         if (mealId) {
             getMealById(mealId).then((object) => {
-            console.log("object: ", object.attributes);
-            setMeal(object);
+                console.log("object: ", object.attributes);
+                setMeal(object);
             });
         }
     }, []);

@@ -8,8 +8,8 @@ const RecipeList = () => {
     // todo: update to tie to a specific user
     useEffect(() => {
         getAllMeals().then((results) => {
-          console.log("recipes: ", results);
-          setRecipes(results);
+            console.log("recipes: ", results);
+            setRecipes(results);
         });
     }, []);
 
