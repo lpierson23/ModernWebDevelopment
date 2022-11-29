@@ -34,7 +34,6 @@ const ShoppingList = () => {
         if (itemCreated) {
           alert(`${itemCreated.get("itemName")} successfully added to list!`);
         }
-        // TODO: redirect user to main app
         setAdd(false);
       });
     }

@@ -38,7 +38,6 @@ const RequestsList = () => {
         if (mealCreated) {
           alert(`${mealCreated.get("mealName")} successfully added to list!`);
         }
-        // TODO: redirect user to main app
         setAdd(false);
       });
     }

@@ -17,8 +17,3 @@ const RecipeBook = () => {
 };
 
 export default RecipeBook;
-
-// todo: menu column that displays all user recipes
-// todo: when click on item in the menu side panel will open displaying recipe name, servings, rating, comments, and mini window of recipe
-// todo: attempt seperate scrolling for title and menu vs recipe
-// todo: under recipe, display form to add rating and comments

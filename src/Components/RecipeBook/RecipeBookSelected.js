@@ -8,6 +8,8 @@ const RecipeBookSelected = () => {
     const params = useParams();
     const mealId = params.mealId;
 
+    // TODO: update meal id for comments when changes
+
     return (
         <div>
             <NavBar />
