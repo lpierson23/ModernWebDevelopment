@@ -46,6 +46,46 @@ const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
             placeholder="household"
             required
           />
+        </div>
+        <h3>If you would like to connect a Pinterest account, please fill out the following: </h3>
+        <div className="form-group">
+          <label>Pinterest Email </label>
+          <br />
+          <input
+            type="text"
+            className="form-control"
+            id="pinterest-email-input"
+            value={user.pinterestEmail}
+            onChange={onChange}
+            name="pinterestEmail"
+            placeholder="Pinterest Email"
+          />
+        </div>
+        <div className="form-group">
+          <label>Pinterest Password </label>
+          <br />
+          <input
+            type="password"
+            className="form-control"
+            id="pinterest-password-input"
+            value={user.pinterestPassword}
+            onChange={onChange}
+            name="pinterestPassword"
+            placeholder="Pinterest Password"
+          />
+        </div>
+        <div className="form-group">
+          <label>Pinterest Board Name </label>
+          <br />
+          <input
+            type="text"
+            className="form-control"
+            id="pinterest-boardName-input"
+            value={user.boardName}
+            onChange={onChange}
+            name="boardName"
+            placeholder="boardName"
+          />
         </div>{" "}
         </div> : <></>}
         <div>

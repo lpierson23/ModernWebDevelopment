@@ -8,6 +8,9 @@ export const createUser = (newUser) => {
   user.set("firstName", newUser.firstName);
   user.set("lastName", newUser.lastName);
   user.set("household", newUser.household);
+  user.set("pinterestEmail", newUser.pinterestEmail);
+  user.set("pinterestPassword", newUser.pinterestPassword);
+  user.set("boardName", newUser.boardName);
   user.set("password", newUser.password);
   user.set("email", newUser.email);
 

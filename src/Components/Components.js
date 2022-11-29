@@ -7,6 +7,7 @@ import AuthLogin from "./Auth/AuthRegister.js";
 import AuthRegister from "./Auth/AuthLogin.js";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute.js";
+import Pinterest from "./Pinterest/Pinterest.js";
 
 export default function Components() {
   return (
@@ -38,6 +39,12 @@ export default function Components() {
           path="/calendar" 
           element={
             <ProtectedRoute path="/calendar" element={Calendar} />
+          }
+        />
+        <Route 
+          path="/pinterest" 
+          element={
+            <ProtectedRoute path="/pinterest" element={Pinterest} />
           }
         />
       </Routes>

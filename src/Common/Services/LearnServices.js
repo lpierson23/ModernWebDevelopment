@@ -157,9 +157,11 @@ export const createUser = (newUser) => {
   console.log("Creating: ", newUser.username);
   const user = new Parse.User();
   // using setter to UPDATE the object
-  user.set("userame", newUser.username);
+  user.set("username", newUser.username);
   user.set("email", newUser.email);
-  user.set("password", newUser.password)
+  user.set("password", newUser.password);
+  user.set("pinterestUsername", newUser.pinterestUsername);
+  user.set("boardName", newUser.boardName);
   return user.signUp().then((result) => {
     // returns new Lesson object
     return result;
