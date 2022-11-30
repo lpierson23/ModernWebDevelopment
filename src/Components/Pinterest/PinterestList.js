@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import {editUserPinterest} from "./PinterestService.js";
+import {editUserPinterest, notLinked} from "./PinterestService.js";
 import PinterestForm from "./PinterestForm.js";
 
-const PinterestList = () => {
+const PinterestList = ({ notLinked, onChange, onSubmit }) => {
   const [newPinterest, setNewPinterest] = useState({
     pinterestUsername: "",
     boardName: ""
@@ -63,23 +63,29 @@ const PinterestList = () => {
 
   return (
     <div>
-      <PinterestForm
-        onClick={onClickHandler}
-        onChange={onChangeHandler}
-        pinterest={newPinterest}
-      />
-      <hr />
-      <h3>Pins found on your board</h3>
-      {/* {pins.length > 0 && (
-        <ul>
-          {pins.map((pin) => (
-            <li key={pin.id}>
-              {pin.grid_title}
-            </li>
-          ))}
-        </ul>
-      )} */}
-    </div>
+    {notLinked ?
+      <div>
+        <PinterestForm
+          onClick={onClickHandler}
+          onChange={onChangeHandler}
+          pinterest={newPinterest}
+        />
+      </div>
+    : <></>}
+      <div>
+        <hr />
+        <h3>Pins found on your board</h3>
+        {/* {pins.length > 0 && (
+          <ul>
+            {pins.map((pin) => (
+              <li key={pin.id}>
+                {pin.grid_title}
+              </li>
+            ))}
+          </ul>
+        )} */}
+      </div>
+      </div>
   );
 };
 

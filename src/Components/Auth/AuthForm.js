@@ -80,7 +80,7 @@ const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
         </div>
         </div> : <></>}
         <div className="form-group">
-          <button type="submit" className="btn btn-primary" onSubmit={onSubmit}>
+          <button class="button" type="submit" className="btn btn-primary" onSubmit={onSubmit}>
             Submit
           </button>
         </div>

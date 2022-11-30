@@ -33,20 +33,43 @@ import Parse from "parse";
   //   console.log("results: ", results);
   //   return results;
 
+export const notLinked = async () => {
+    const User = Parse.User.current();
+    var username = User.get("username");
+    const Account = Parse.Object.extend("Pinterest");
+    const account = new Account();
+    const query = new Parse.Query(Account);
+
+    // equalTo can be used in any data type
+    query.equalTo('username', username);
+    let queryResult = await query.find();
+    if (queryResult.length == 0){
+        return true;
+    } else {
+        return false;
+    } 
+};
 
 export const editUserPinterest = async (userPinterest) => {
-    console.log("Linking to Pinterest account");
     const User = Parse.User.current();
+    var username = User.get("username");
     const Account = Parse.Object.extend("Pinterest");
     const account = new Account();
 
-    // using setter to UPDATE the object
-    account.set("username", User.get("username"));
-    account.set("pinterestUsername", userPinterest.pinterestUsername);
-    account.set("boardName", userPinterest.boardName);
-    return account.save().then((result) => {
-        // returns new Lesson object
-        return result;
-    });
+    if (!alreadyLinked()){
+        // using setter to UPDATE the object
+        console.log("Linking to Pinterest account");
+        account.set("username", username);
+        account.set("pinterestUsername", userPinterest.pinterestUsername);
+        account.set("boardName", userPinterest.boardName);
+        return account.save().then((result) => {
+            // returns new Account object
+            return result;
+        });
+    } else {
+        console.log("Account already linked to Pinterest.")
+        alert(`Account already linked to Pinterest.`);
+        console.log(queryResult);
+    }
 };
 

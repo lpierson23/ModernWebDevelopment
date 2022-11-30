@@ -40,7 +40,7 @@ const PinterestForm = ({ onChange, onClick }) => {
           <br />
           <br />
 
-          <button type="submit" onClick={onClick}>Link Pinterest Account</button>
+          <button class="button" type="submit" onClick={onClick}>Link Pinterest Account</button>
         </div>
       </form>
     </div>

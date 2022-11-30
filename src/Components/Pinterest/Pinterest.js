@@ -6,7 +6,8 @@ const Pinterest = () => {
     return (
       <div>
         <NavBar />
-        <h1>Link your Pinterest account to load recipes into your recipe book!</h1>
+        <h1>Linked Pinterest</h1>
+        <h2>View recent pins on your Pinterest board and load recipes into your recipe book!</h2>
         <PinterestList />
       </div>
     );
