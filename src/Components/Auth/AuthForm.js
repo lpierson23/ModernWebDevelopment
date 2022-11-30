@@ -1,9 +1,40 @@
 import React from "react";
+import PinterestForm from "../Pinterest/PinterestForm";
 
 const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
 
   return (
     <form onSubmit={onSubmit} autoComplete="off">
+    <div>
+      <div>
+        <div className="form-group">
+          <label>Email </label>
+          <br />
+          <input
+            type="email"
+            className="form-control"
+            id="email-input"
+            value={user.email}
+            onChange={onChange}
+            name="email"
+            required
+          />
+        </div>{" "}
+        <div className="form-group">
+          <label>Password </label>
+          <br />
+          <input
+            type="password"
+            className="form-control"
+            id="password-input"
+            value={user.password}
+            onChange={onChange}
+            name="password"
+            min="0"
+            required
+          />
+        </div>
+    </div>
     {!isLogin ?  /* if user is registering, ask for name */
     <div>
         <div className="form-group">
@@ -47,75 +78,7 @@ const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
             required
           />
         </div>
-        <h3>If you would like to connect a Pinterest account, please fill out the following: </h3>
-        <div className="form-group">
-          <label>Pinterest Email </label>
-          <br />
-          <input
-            type="text"
-            className="form-control"
-            id="pinterest-email-input"
-            value={user.pinterestEmail}
-            onChange={onChange}
-            name="pinterestEmail"
-            placeholder="Pinterest Email"
-          />
-        </div>
-        <div className="form-group">
-          <label>Pinterest Password </label>
-          <br />
-          <input
-            type="password"
-            className="form-control"
-            id="pinterest-password-input"
-            value={user.pinterestPassword}
-            onChange={onChange}
-            name="pinterestPassword"
-            placeholder="Pinterest Password"
-          />
-        </div>
-        <div className="form-group">
-          <label>Pinterest Board Name </label>
-          <br />
-          <input
-            type="text"
-            className="form-control"
-            id="pinterest-boardName-input"
-            value={user.boardName}
-            onChange={onChange}
-            name="boardName"
-            placeholder="boardName"
-          />
-        </div>{" "}
         </div> : <></>}
-        <div>
-        <div className="form-group">
-          <label>Email </label>
-          <br />
-          <input
-            type="email"
-            className="form-control"
-            id="email-input"
-            value={user.email}
-            onChange={onChange}
-            name="email"
-            required
-          />
-        </div>{" "}
-        <div className="form-group">
-          <label>Password </label>
-          <br />
-          <input
-            type="password"
-            className="form-control"
-            id="password-input"
-            value={user.password}
-            onChange={onChange}
-            name="password"
-            min="0"
-            required
-          />
-        </div>
         <div className="form-group">
           <button type="submit" className="btn btn-primary" onSubmit={onSubmit}>
             Submit

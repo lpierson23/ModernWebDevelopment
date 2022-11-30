@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {getAllPins, editUserPinterest} from "./PinterestService.js";
+import {editUserPinterest} from "./PinterestService.js";
 import PinterestForm from "./PinterestForm.js";
 
 const PinterestList = () => {
@@ -15,18 +15,18 @@ const PinterestList = () => {
 
   // UseEffect to run when the page loads to
   // obtain async data and render
-  useEffect(() => {
-    getAllPins().then((results) => {
-      console.log("items: ", results);
-      setPins(results);
-    });
-  }, [items]);
+  // useEffect(() => {
+  //   getAllPins().then((results) => {
+  //     console.log("items: ", results);
+  //     setPins(results);
+  //   });
+  // }, [items]);
 
   useEffect(() => {
     if (newPinterest && add) {
       editUserPinterest(newPinterest).then((pinterestUpdated) => {
         if (pinterestUpdated) {
-          alert(`${pinterestUpdated.get("pinterestUsername")} successfully linked to Pinterest!`);
+          alert(`Successfully linked to Pinterest!`);
         }
         setAdd(false);
       });
@@ -66,9 +66,10 @@ const PinterestList = () => {
       <PinterestForm
         onClick={onClickHandler}
         onChange={onChangeHandler}
+        pinterest={newPinterest}
       />
       <hr />
-      <p3>Pins found on your board</p3>
+      <h3>Pins found on your board</h3>
       {/* {pins.length > 0 && (
         <ul>
           {pins.map((pin) => (

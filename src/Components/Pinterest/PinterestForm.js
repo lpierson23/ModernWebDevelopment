@@ -7,7 +7,7 @@ const PinterestForm = ({ onChange, onClick }) => {
       <form>
         <p>Please enter your Pinterest username to link Meal Planner to your account.</p>
         <p>If your accounts are already linked, an error may occur.</p>
-        {/* Gets users email and password to Pinterest */}
+        {/* Gets users username and board on Pinterest */}
         <hr />
         <div>
           <label htmlFor="pinterestUsername">

@@ -6,7 +6,7 @@ export const getAllGroceries = () => {
   const Item = Parse.Object.extend("Groceries");
   const User = Parse.User.current();
   const query = new Parse.Query(Item);
-  query.equalTo("household", User.get("household"))
+  query.equalTo("household", User.get("household"));
   return query.find().then((results) => {
     // returns array of item objects
     console.log("results: ", results);
