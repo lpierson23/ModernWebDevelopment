@@ -1,7 +1,7 @@
 import React from "react";
 
 /* STATELESS CHILD COMPONENT */
-const PinterestForm = ({ onChange, onClick }) => {
+const PinterestAccountForm = ({ onChange, onClick }) => {
   return (
     <div>
       <form>
@@ -40,11 +40,11 @@ const PinterestForm = ({ onChange, onClick }) => {
           <br />
           <br />
 
-          <button class="button" type="submit" onClick={onClick}>Link Pinterest Account</button>
+          <button className="button" type="submit" onClick={onClick}>Link Pinterest Account</button>
         </div>
       </form>
     </div>
   );
 };
 
-export default PinterestForm;
+export default PinterestAccountForm;

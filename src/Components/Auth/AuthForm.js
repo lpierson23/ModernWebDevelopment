@@ -1,5 +1,4 @@
 import React from "react";
-import PinterestForm from "../Pinterest/PinterestForm";
 
 const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
 
@@ -80,7 +79,7 @@ const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
         </div>
         </div> : <></>}
         <div className="form-group">
-          <button class="button" type="submit" className="btn btn-primary" onSubmit={onSubmit}>
+          <button className="button" type="submit" onSubmit={onSubmit}>
             Submit
           </button>
         </div>

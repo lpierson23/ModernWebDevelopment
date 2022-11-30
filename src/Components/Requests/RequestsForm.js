@@ -53,7 +53,7 @@ const RequestsForm = ({ onChange, onClick }) => {
           <br />
           <br />
 
-          <button class="button" type="submit" onClick={onClick}>Submit</button>
+          <button className="button" type="submit" onClick={onClick}>Submit</button>
         </div>
       </form>
     </div>

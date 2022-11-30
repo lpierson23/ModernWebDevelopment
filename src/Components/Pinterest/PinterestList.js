@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import {editUserPinterest, notLinked} from "./PinterestService.js";
-import PinterestForm from "./PinterestForm.js";
+import {getAllPins, editUserPinterest, notLinked} from "./PinterestService.js";
+import PinterestAccountForm from "./PinterestAccountForm.js";
+import PinterestPinsForm from "./PinterestPinsForm.js";
 
 const PinterestList = ({ notLinked, onChange, onSubmit }) => {
   const [newPinterest, setNewPinterest] = useState({
@@ -13,15 +14,6 @@ const PinterestList = ({ notLinked, onChange, onSubmit }) => {
   // Flags in the state to watch for add/remove updates
   const [add, setAdd] = useState(false);
 
-  // UseEffect to run when the page loads to
-  // obtain async data and render
-  // useEffect(() => {
-  //   getAllPins().then((results) => {
-  //     console.log("items: ", results);
-  //     setPins(results);
-  //   });
-  // }, [items]);
-
   useEffect(() => {
     if (newPinterest && add) {
       editUserPinterest(newPinterest).then((pinterestUpdated) => {
@@ -32,6 +24,19 @@ const PinterestList = ({ notLinked, onChange, onSubmit }) => {
       });
     }
   }, [newPinterest, add]);
+
+  useEffect(() => {
+      if(pins) {
+        console.log("working on it")
+        getAllPins().then((pinsFound) => {
+          if(pinsFound) {
+            alert(`Loading pins now!`);
+            console.log(pinsFound);
+          }
+        setPins(false);
+      });
+    }
+  }, [pins]);
 
 
   // Handler to handle event passed from child submit button
@@ -55,26 +60,33 @@ const PinterestList = ({ notLinked, onChange, onSubmit }) => {
     console.log("onChange:", newValue);
   };
 
-  // useEffect(() => {
-  //   getAllPins().then((pins) => {
-  //     setPins(pins);
-  //   });
-  // }, []);
+    // Handler to handle event passed from child submit button
+    const onLoadClickHandler = (e) => {
+      e.preventDefault();
+      console.log("Loading pins")
+      setPins(true);
+    };
+
 
   return (
     <div>
     {notLinked ?
       <div>
-        <PinterestForm
+        <PinterestAccountForm
           onClick={onClickHandler}
           onChange={onChangeHandler}
           pinterest={newPinterest}
         />
       </div>
-    : <></>}
+    : 
       <div>
         <hr />
-        <h3>Pins found on your board</h3>
+        <h3>Recent Pins</h3>
+        <div>
+        <PinterestPinsForm
+          onLoadClick={onLoadClickHandler}
+        />
+        </div>
         {/* {pins.length > 0 && (
           <ul>
             {pins.map((pin) => (
@@ -84,7 +96,7 @@ const PinterestList = ({ notLinked, onChange, onSubmit }) => {
             ))}
           </ul>
         )} */}
-      </div>
+      </div>}
       </div>
   );
 };

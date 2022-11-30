@@ -43,7 +43,7 @@ const ShoppingForm = ({ onChange, onClick }) => {
         <br />
         <br />
 
-        <button class="button" type="submit" onClick={onClick}>
+        <button className="button" type="submit" onClick={onClick}>
           Submit
         </button>
       </form>
