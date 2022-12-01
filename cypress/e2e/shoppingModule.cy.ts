@@ -10,7 +10,7 @@ describe("shopping functionality", () => {
         cy.visit("/auth/login");
         cy.get("#email-input").type("fake@email.com");
         cy.get("#password-input").type("password");
-        cy.get('button[type="submit"]').click();
+        cy.get('button').click();
         cy.visit("/shopping");
     });
 
