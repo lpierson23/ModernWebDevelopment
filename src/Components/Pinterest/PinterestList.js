@@ -9,6 +9,13 @@ const PinterestList = ({ notLinked, onChange, onSubmit }) => {
     boardName: ""
   });
 
+  const [newPin, setNewPin] = useState({
+    pinterestUsername: "",
+    gridTitle: "",
+    link: "",
+    imageLink: ""
+  });
+
   // Variables in the state to hold data
   const [pins, setPins] = useState([]);
   const [getPins, setGetPins] = useState(false);
@@ -85,17 +92,16 @@ const PinterestList = ({ notLinked, onChange, onSubmit }) => {
           onLoadClick={onLoadClickHandler}
         />
         </div>
-        {/* {pins.length > 0 && (
-          <ul>
+        {/* <div class="masonry-container">
+          {pins.length > 0 && (
             {pins.map((pin) => (
-              <li>
-                {pin["gridTitle"]}
-                {pin["link"]}
-                {pin["imageLink"]}
-              </li>
+              <div class="masonry-item">
+                <a href=pin["link"]><img src=pin["imageLink"] /></a>
+                <span>pin["gridTitle"]</span>
+              </div>
             ))}
-          </ul>
-        )} */}
+          )}
+        </div> */}
       </div>}
       </div>
   );
