@@ -8,8 +8,8 @@ describe('protected routing', () => {
 describe("shopping functionality", () => {
     beforeEach(() => {
         cy.visit("/auth/login");
-        cy.get("[data-test=email]").type("fake@email.com");
-        cy.get("[data-test=password]").type("password{enter}");
+        cy.get("#email-input").type("fake@email.com");
+        cy.get("#password-input").type("password");
         cy.get('button[type="submit"]').click();
         cy.visit("/shopping");
     });
