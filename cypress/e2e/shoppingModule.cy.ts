@@ -24,14 +24,14 @@ describe("shopping functionality", () => {
     });
 
     it("requires servings field", () => {
-        cy.get("[data-test=itemName]").type("spinach");
+        cy.get("#itemName").type("spinach");
         cy.get('button[type="submit"]').click();
         cy.get(".error-messages").should("contain", "quantity can't be blank");
     });
 
     it("able to submit form", () => {
-        cy.get("[data-test=itemName]").type("spinach");
-        cy.get("[data-test=quantity]").type("4");
+        cy.get("#itemName").type("spinach");
+        cy.get("#quantity").type("4");
         cy.get('button[type="submit"]').click();
         cy.on('window:alert',(t)=>{
         expect(t).to.contains('spinach successfully added to list!');
@@ -39,8 +39,8 @@ describe("shopping functionality", () => {
     });
 
     it("displays list of current grocery items", () => {
-        cy.get("[data-test=itemName]").type("spinach");
-        cy.get("[data-test=quantity]").type("4");
+        cy.get("#itemName").type("spinach");
+        cy.get("#quantity").type("4");
         cy.get('button[type="submit"]').click();
         cy.contains("#shoppingList li spinach");
     });
