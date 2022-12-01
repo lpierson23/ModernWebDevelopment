@@ -1,13 +1,13 @@
 describe('protected routing', () => {
     it("has a protected routing and auto-rerouting to auth module", () => {
         cy.visit("/shopping");
-        cy.hash().should("eq", "#/");
+        cy.hash().should("eq", "/auth");
     });
   });
   
 describe("shopping functionality", () => {
     beforeEach(() => {
-        cy.visit("/login");
+        cy.visit("/auth/login");
         cy.get("[data-test=email]").type("fake@email.com");
         cy.get("[data-test=password]").type("password{enter}");
         cy.get('button[type="submit"]').click();
