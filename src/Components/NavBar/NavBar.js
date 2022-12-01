@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => (
   <nav>
-    <ul className="navigation">
+    <ul className="navigation" id="navbar">
       {/* displays styled navigation bar at the top of the page */}
       <li>
         <Link to="/">Home</Link>

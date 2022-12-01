@@ -94,7 +94,7 @@ const ShoppingList = () => {
         <h3>Shopping List</h3>
         {/* prints all items from Groceries database */}
         {items.length > 0 && (
-          <ul>
+          <ul id="shoppingList">
             {items.map((item) => (
               <li key={item.id}>
                 {item.get("itemName")} ({item.get("quantity")})
