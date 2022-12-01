@@ -11,6 +11,7 @@ const PinterestList = ({ notLinked, onChange, onSubmit }) => {
 
   // Variables in the state to hold data
   const [pins, setPins] = useState([]);
+  const [getPins, setGetPins] = useState(false);
   // Flags in the state to watch for add/remove updates
   const [add, setAdd] = useState(false);
 
@@ -26,14 +27,11 @@ const PinterestList = ({ notLinked, onChange, onSubmit }) => {
   }, [newPinterest, add]);
 
   useEffect(() => {
-      if(pins) {
-        console.log("working on it")
-        getAllPins().then((pinsFound) => {
-          if(pinsFound) {
-            alert(`Loading pins now!`);
-            console.log(pinsFound);
-          }
-        setPins(false);
+    if(getPins){
+      getAllPins().then((results) => {
+        console.log("after getting pins")
+        console.log("pins: ", results);
+        setPins(results);
       });
     }
   }, [pins]);
@@ -64,7 +62,7 @@ const PinterestList = ({ notLinked, onChange, onSubmit }) => {
     const onLoadClickHandler = (e) => {
       e.preventDefault();
       console.log("Loading pins")
-      setPins(true);
+      setGetPins(true);
     };
 
 
@@ -90,8 +88,10 @@ const PinterestList = ({ notLinked, onChange, onSubmit }) => {
         {/* {pins.length > 0 && (
           <ul>
             {pins.map((pin) => (
-              <li key={pin.id}>
-                {pin.grid_title}
+              <li>
+                {pin["gridTitle"]}
+                {pin["link"]}
+                {pin["imageLink"]}
               </li>
             ))}
           </ul>

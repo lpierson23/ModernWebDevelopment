@@ -41,20 +41,6 @@ const ShoppingList = () => {
     }
   }, [newItem, add]);
 
-  // Check if remove state variable is holding an ID
-  //   if (remove.length > 0) {
-  //     //Filter the old items list to take out selected item
-  //     const newItems = items.filter((item) => item.id !== remove);
-  //     setItems(newItems);
-
-  //     removeItem(remove).then(() => {
-  //       console.log("Removed item with ID: ", remove);
-  //     });
-  //     // Reset remove state variable
-  //     setRemove("");
-  //   }
-  // }, [add, remove]);
-
   // Handler to handle event passed from child submit button
   const onClickHandler = (e) => {
     e.preventDefault();
@@ -75,13 +61,6 @@ const ShoppingList = () => {
     });
     console.log("onChange:", newValue);
   };
-
-  // Handler to track changes to the child input text
-  // const onQuantityChangeHandler = (e) => {
-  //   e.preventDefault();
-  //   console.log("onQuantityChange:", e.target.value);
-  //   setQuantity(e.target.value);
-  // };
 
   return (
     <div>

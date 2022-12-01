@@ -2,8 +2,21 @@
 import axios from "axios";
 import Parse from "parse";
 
-// const url =
-//   "https://api.apify.com/v2/acts/alexey~pinterest-crawler/run-sync-get-dataset-items?token=apify_api_e9OxTOaOz565aecU3fSDVWvfgPM0ST1fn0JB";
+// Create operation for meals
+// export const createPin = (newPin) => {
+//     console.log("Creating: ", newPin.gridTitle);
+//     const Pin = Parse.Object.extend("Pins");
+//     const pin = new Pin();
+//     // using setter to UPDATE the object
+//     pin.set("pinterestUsername", newPin.pinterestUsername);
+//     pin.set("gridTitle", newPin.gridTitle);
+//     pin.set("link", newPin.link);
+//     pin.set("imageLink", newPin.imageLink);
+//     return pin.save().then((result) => {
+//       // returns new Pin object
+//       return result;
+//     });
+// };
 
 export const getAllPins = async () => {
     const User = Parse.User.current();
@@ -17,9 +30,52 @@ export const getAllPins = async () => {
         if(result){
             var pinterestUsername = result.get("pinterestUsername");
             var boardName = result.get("boardName");
+            boardName = boardName.toLowerCase();
+            boardName = boardName.replaceAll("!", "");
+            boardName = boardName.replaceAll(".", "");
+            boardName = boardName.replaceAll("-", "");
+            boardName = boardName.replaceAll(" ", "-");
+
+            //fix board name by eliminating punctuation, lowercase letters, and hyphen instead of spaces
+            console.log(pinterestUsername);
+            const url = "https://api.apify.com/v2/acts/alexey~pinterest-crawler/run-sync-get-dataset-items?token=apify_api_e9OxTOaOz565aecU3fSDVWvfgPM0ST1fn0JB";
+            const startUrl = "https://www.pinterest.com/" + pinterestUsername + "/" + boardName + "/";
+            console.log(url);
+            console.log(startUrl);
+            const pinCount = 10;
+            const input = {
+                "maxPinsCnt": pinCount,
+                "proxyConfig": {
+                    "useApifyProxy": true
+                },
+                "startUrls": [
+                    startUrl
+                ]
+            }
 
             //access Pinterest Scraper with given info
-
+            axios.post(url, input).then((response) => {
+                console.log("POST successful");
+                // return(response.data);
+                const pins = []
+                for (var i = 0; i < pinCount; i++) {
+                    const pin = {}
+                    pin["gridTitle"] = response.data[i]["grid_title"]
+                    pin["link"] = response.data[i]["link"]
+                    pin["imageLink"] = response.data[i]["image"]["url"]
+                    console.log(pin);
+                    pins.push(pin);
+                    // console.log("Title", response.data[i]["grid_title"]);
+                    // console.log("Link", response.data[i]["link"]);
+                    // console.log("Image Link", response.data[i]["image"]["url"]);
+                }
+                console.log("out of loop");
+                return pins;
+            })
+            .catch((err) => {
+                console.log("POST error: ", err);
+            });
+        
         } else {
             console.log("There is no Pinterest account associated with this account");
         }
