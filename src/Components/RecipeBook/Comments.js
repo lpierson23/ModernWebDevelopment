@@ -50,8 +50,15 @@ const Comments = ({ mealId }) => {
 
     const averageRating = (comments) => {
         var total = 0;
-        comments.forEach(comment => total+=parseFloat(comment.get("rating")))
-        return total / comments.length;
+        var count = 0;
+        comments.forEach(comment => {
+            let rating = parseFloat(comment.get("rating"))
+            if (rating != 0.0) {
+                total += rating;
+                count += 1;
+            }
+        });
+        return total / count;
     }
 
     return (

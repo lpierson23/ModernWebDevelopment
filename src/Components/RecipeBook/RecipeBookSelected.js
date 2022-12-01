@@ -5,10 +5,8 @@ import RecipeView from "./RecipeView.js";
 import { useParams } from "react-router-dom";
 
 const RecipeBookSelected = () => {
-    const params = useParams();
-    const mealId = params.mealId;
-
-    // TODO: update meal id for comments when changes
+    var params = useParams();
+    var mealId = params.mealId;
 
     return (
         <div>
