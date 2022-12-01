@@ -1,7 +1,7 @@
 describe('protected routing', () => {
     it("has a protected routing and auto-rerouting to auth module", () => {
         cy.visit("/shopping");
-        cy.hash().should("eq", "/auth");
+        cy.should("eq", "/auth/");
     });
   });
   
