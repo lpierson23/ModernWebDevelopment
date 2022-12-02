@@ -6,7 +6,7 @@ const PinterestPinsForm = ({ onLoadClick }) => {
     <div>
       <form>
         <div>
-          <button className="button" type="submit" onClick={onLoadClick}>Load Recent Pins</button>
+          <button className="button" type="submit" onClick={onLoadClick}>Load Most Recent Pins</button>
         </div>
       </form>
     </div>

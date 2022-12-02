@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {createPin, getAllPins, editUserPinterest, notLinked} from "./PinterestService.js";
+import {getPinsFromDatabase, createPin, getAllPins, editUserPinterest, notLinked} from "./PinterestService.js";
 import PinterestAccountForm from "./PinterestAccountForm.js";
 import PinterestPinsForm from "./PinterestPinsForm.js";
 
@@ -18,6 +18,7 @@ const PinterestList = ({ notLinked, onChange, onSubmit }) => {
 
   // Variables in the state to hold data
   const [pins, setPins] = useState([]);
+  const [databasePins, setDatabasePins] = useState([]);
   const [getPins, setGetPins] = useState(false);
   // Flags in the state to watch for add/remove updates
   const [add, setAdd] = useState(false);
@@ -41,17 +42,16 @@ const PinterestList = ({ notLinked, onChange, onSubmit }) => {
         console.log("after getting pins")
         console.log("pins: ", results);
         setGetPins(false);
-
-        // for (pin in pins){
-        //   createItem(pin).then((pinCreated) => {
-        //     if (pinCreated) {
-        //       console.log("successful pin creation")
-        //     }
-        //   });
-        // } 
       });
     }
   }, [getPins, pins]);
+
+  useEffect(() => {
+    getPinsFromDatabase().then((results) => {
+      console.log("items: ", results);
+      setDatabasePins(results);
+    });
+  }, [databasePins]);
 
 
   // Handler to handle event passed from child submit button
@@ -82,16 +82,12 @@ const PinterestList = ({ notLinked, onChange, onSubmit }) => {
       setGetPins(true);
     };
 
-  const displayPins = [];
-
-  for (let pin in pins) {
-    console.log(pin["link"])
-    displayPins.push(<div className="masonry-item">
-      <a href={pin["link"]}><img src={pin["imageLink"]}/></a>
-      <span>{pin["gridTitle"]}</span>
-      </div>);
-  }
-
+    const formattedPins = databasePins.map(function (databasePin) {
+      return <a href={databasePin.get("link")} target="_blank"><div className="masonry-item" key={databasePin.id}>
+        <img src={databasePin.get("imageLink")} />
+        <blockquote className = "masonry-title">{databasePin.get("gridTitle")}</blockquote>
+      </div></a>;
+    });
 
   return (
     <div>
@@ -107,19 +103,19 @@ const PinterestList = ({ notLinked, onChange, onSubmit }) => {
       <div>
         <hr />
         <h3>Recent Pins</h3>
+
+        <br />
+
+        <div class="masonry-container">
+          {formattedPins}
+        </div>
+        <br />
         <div>
         <PinterestPinsForm
           onLoadClick={onLoadClickHandler}
         />
         </div>
-
-        <br />
-        <hr />
-        <br />
-
-        <div className="masonry-container">
-          {displayPins}
-        </div>
+        
       </div>}
       </div>
   );

@@ -18,6 +18,18 @@ export const createPin = (newPin) => {
     });
 };
 
+export const getPinsFromDatabase = () => {
+    const Pin = Parse.Object.extend("Pins");
+    const User = Parse.User.current();
+    const query = new Parse.Query(Pin);
+    query.equalTo("username", User.get("username"))
+    return query.find().then((results) => {
+      // returns array of item objects
+      console.log("results: ", results);
+      return results;
+    });
+  };
+
 export const getAllPins = async () => {
     const User = Parse.User.current();
     var username = User.get("username");
@@ -30,14 +42,14 @@ export const getAllPins = async () => {
         if(result){
             var pinterestUsername = result.get("pinterestUsername");
             var boardName = result.get("boardName");
+
+            //fix board name by eliminating punctuation, lowercase letters, and hyphen instead of spaces
             boardName = boardName.toLowerCase();
             boardName = boardName.replaceAll("!", "");
             boardName = boardName.replaceAll(".", "");
             boardName = boardName.replaceAll("-", "");
             boardName = boardName.replaceAll(" ", "-");
 
-            //fix board name by eliminating punctuation, lowercase letters, and hyphen instead of spaces
-            console.log(pinterestUsername);
             const url = "https://api.apify.com/v2/acts/alexey~pinterest-crawler/run-sync-get-dataset-items?token=apify_api_e9OxTOaOz565aecU3fSDVWvfgPM0ST1fn0JB";
             const startUrl = "https://www.pinterest.com/" + pinterestUsername + "/" + boardName + "/";
             const pinCount = 10;
@@ -58,12 +70,24 @@ export const getAllPins = async () => {
                 const pins = []
                 for (var i = 0; i < pinCount; i++) {
                     const pin = {};
-                    pin["pinterestUsername"] = pinterestUsername;
+                    pin["username"] = username;
                     pin["gridTitle"] = response.data[i]["grid_title"];
                     pin["link"] = response.data[i]["link"];
                     pin["imageLink"] = response.data[i]["image"]["url"];
                     console.log(pin);
                     pins.push(pin);
+
+                    const Pin = Parse.Object.extend("Pins");
+                    const newPin = new Pin();
+                    const query = new Parse.Query(Pin);
+                   
+                    // using setter to UPDATE the object
+                    newPin.set("username", username);
+                    newPin.set("gridTitle", response.data[i]["grid_title"]);
+                    newPin.set("link", response.data[i]["link"]);
+                    newPin.set("imageLink", response.data[i]["image"]["url"]);
+                    newPin.save()
+                                      
 
                     // console.log("Title", response.data[i]["grid_title"]);
                     // console.log("Link", response.data[i]["link"]);
