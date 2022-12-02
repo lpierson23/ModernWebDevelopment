@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {getAllPins, editUserPinterest, notLinked} from "./PinterestService.js";
+import {createPin, getAllPins, editUserPinterest, notLinked} from "./PinterestService.js";
 import PinterestAccountForm from "./PinterestAccountForm.js";
 import PinterestPinsForm from "./PinterestPinsForm.js";
 
@@ -35,13 +35,23 @@ const PinterestList = ({ notLinked, onChange, onSubmit }) => {
 
   useEffect(() => {
     if(getPins){
+      console.log("in use effect")
       getAllPins().then((results) => {
+        setPins(results);
         console.log("after getting pins")
         console.log("pins: ", results);
-        setPins(results);
+        setGetPins(false);
+
+        // for (pin in pins){
+        //   createItem(pin).then((pinCreated) => {
+        //     if (pinCreated) {
+        //       console.log("successful pin creation")
+        //     }
+        //   });
+        // } 
       });
     }
-  }, [pins]);
+  }, [getPins, pins]);
 
 
   // Handler to handle event passed from child submit button
@@ -72,6 +82,16 @@ const PinterestList = ({ notLinked, onChange, onSubmit }) => {
       setGetPins(true);
     };
 
+  const displayPins = [];
+
+  for (let pin in pins) {
+    console.log(pin["link"])
+    displayPins.push(<div className="masonry-item">
+      <a href={pin["link"]}><img src={pin["imageLink"]}/></a>
+      <span>{pin["gridTitle"]}</span>
+      </div>);
+  }
+
 
   return (
     <div>
@@ -92,16 +112,14 @@ const PinterestList = ({ notLinked, onChange, onSubmit }) => {
           onLoadClick={onLoadClickHandler}
         />
         </div>
-        {/* <div class="masonry-container">
-          {pins.length > 0 && (
-            {pins.map((pin) => (
-              <div class="masonry-item">
-                <a href=pin["link"]><img src=pin["imageLink"] /></a>
-                <span>pin["gridTitle"]</span>
-              </div>
-            ))}
-          )}
-        </div> */}
+
+        <br />
+        <hr />
+        <br />
+
+        <div className="masonry-container">
+          {displayPins}
+        </div>
       </div>}
       </div>
   );
