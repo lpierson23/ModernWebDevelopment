@@ -32,3 +32,20 @@
     - updated routing to include protected routes
     - updated routing to include routing to auth module
 
+
+## [0.6.0] - 2022-12-05
+### Added
+- Recipe Book Module
+    - side bar that displays all of a user's recipe
+    - ability to click on sidebar item to see recipe name, number of servings, url, and an image
+    - ability to leave comments on and rate a recipe
+    - displays the average user rating and all submitted comments
+- Cypress unit testing for the shopping module
+
+### Changed
+- Routing
+    - updated routing to include recipe book module
+- Shopping Module
+    - added a few DOM ids for unit testing
+    - fixed useEffect so that it is not constantly reloading shopping list (also done in requests module)
+
