@@ -33,7 +33,7 @@
     - updated routing to include routing to auth module
 
 
-## [0.6.0] - 2022-12-05
+## [0.6.0] - 2022-12-10
 ### Added
 - Recipe Book Module
     - side bar that displays all of a user's recipe
