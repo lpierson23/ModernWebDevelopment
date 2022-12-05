@@ -43,6 +43,6 @@ describe("shopping functionality", () => {
         cy.get("#itemName").type("spinach");
         cy.get("#quantity").type("4");
         cy.get('button').click();
-        cy.contains("#shoppingList li spinach");
+        cy.contains("spinach");
     });
 });
