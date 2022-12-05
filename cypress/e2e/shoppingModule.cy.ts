@@ -16,7 +16,7 @@ describe("shopping functionality", () => {
     });
 
     it("contains nav bar", () => {
-        cy.contains("#navbar");
+        cy.should("contain", "#navbar");
     });
 
     // it("requires grocery item field", () => {
