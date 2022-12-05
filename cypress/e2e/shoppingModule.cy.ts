@@ -27,7 +27,7 @@ describe("shopping functionality", () => {
     it("requires servings field", () => {
         cy.get("#itemName").type("spinach");
         cy.get('button').click();
-        cy.get(".error-messages").should("contain", "quantity can't be blank");
+        cy.should("contain", "spinach (1)");
     });
 
     it("able to submit form", () => {
@@ -43,6 +43,6 @@ describe("shopping functionality", () => {
         cy.get("#itemName").type("spinach");
         cy.get("#quantity").type("4");
         cy.get('button').click();
-        cy.contains("spinach");
+        cy.contains("spinach (4)");
     });
 });
