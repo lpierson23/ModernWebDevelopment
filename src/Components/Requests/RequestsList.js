@@ -28,7 +28,7 @@ const RequestsList = () => {
       console.log("meals: ", results);
       setMeals(results);
     });
-  }, [meals]);
+  }, []);
 
   useEffect(() => {
     console.log("in useEffect");
@@ -63,6 +63,7 @@ const RequestsList = () => {
     // Trigger add flag to create meal and
     // re-render list with new meal
     setAdd(true);
+    window.location.reload(false);
   };
 
   // Handler to track changes to the child input text

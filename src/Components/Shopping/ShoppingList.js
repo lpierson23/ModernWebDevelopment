@@ -26,7 +26,7 @@ const ShoppingList = () => {
       console.log("items: ", results);
       setItems(results);
     });
-  }, [items]);
+  }, []);
 
   useEffect(() => {
     if (newItem && add) {
@@ -59,6 +59,7 @@ const ShoppingList = () => {
     // Trigger add flag to create item and
     // re-render list with new item
     setAdd(true);
+    window.location.reload(false);
   };
 
   // Handler to track changes to the child input text
