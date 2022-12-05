@@ -24,9 +24,15 @@ describe("shopping functionality", () => {
         cy.get(".error-messages").should("contain", "itemName can't be blank");
     });
 
+    it("defaults quantity to 1", () => {
+        cy.get("#itemName").type("spinach");
+        cy.get('button').click();
+        cy.get(".error-messages").should("contain", "itemName can't be blank");
+    });
+
     it("able to submit form", () => {
         cy.get("#itemName").type("beans");
-        cy.get("#quantity").type("1");
+        cy.get("#quantity").type("2").click();
         cy.get('button').click();
         cy.on('window:alert',(t)=>{
             expect(t).to.contains('beans successfully added to list!');
@@ -34,6 +40,6 @@ describe("shopping functionality", () => {
     });
 
     it("displays list of current grocery items", () => {
-        cy.contains("beans (1)");
+        cy.contains("beans (2)");
     });
 });
