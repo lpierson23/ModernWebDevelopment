@@ -1,3 +1,11 @@
+function preventFormSubmitDefault(selector) {
+    cy.get(selector).then(form$ => {
+      form$.on("submit", e => {
+        e.preventDefault();
+      });
+    });
+  }
+
 describe('protected routing', () => {
     it("has a protected routing and auto-rerouting to auth module", () => {
         cy.visit("/shopping");
@@ -7,6 +15,7 @@ describe('protected routing', () => {
   
 describe("shopping functionality", () => {
     beforeEach(() => {
+        preventFormSubmitDefault("form");
         cy.visit("/auth/login");
         cy.get("#email-input").type("fake@email.com");
         cy.get("#password-input").type("password");

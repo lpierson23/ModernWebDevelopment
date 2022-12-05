@@ -8,7 +8,9 @@ const RecipeView = ({ mealId }) => {
     useEffect(() => {
         if (mealId) {
             getMealById(mealId).then((object) => {
-                console.log("object: ", object.attributes);
+                const image = object.get("image");
+                console.log("image: ", image);
+                console.log("image url: ", image._url);
                 setMeal(object);
             });
         }
@@ -24,8 +26,10 @@ const RecipeView = ({ mealId }) => {
                     <h2 className="recipe-heading"> {meal.attributes.mealName} </h2>
                     <p className="recipe-text"> Servings: {meal.attributes.servings} </p>
                     {/* TODO: fix errors with iframe */}
-                    {meal.attributes.url && (<iframe src={meal.attributes.url} width="50%" height="400px" title="Recipe"></iframe>)}
+                    {/* {meal.attributes.url && (<iframe src={meal.attributes.url} width="50%" height="400px" title="Recipe"></iframe>)} */}
+                    {meal.attributes.url && (<p className="recipe-text">Recipe: <a href={meal.get("url")} target="_blank" rel="noopener noreferrer">link</a></p>)}
                     {!meal.attributes.url && (<p className="recipe-text">No recipe given</p>)}
+                    {meal.attributes.image && (<img source={meal.get("image")._url} alt="Recipe" width="50%" />)}
                     <br />
                     <br />
                     <Comments mealId={mealId} />
