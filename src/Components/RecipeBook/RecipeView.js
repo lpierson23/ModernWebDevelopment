@@ -21,7 +21,8 @@ const RecipeView = ({ mealId }) => {
             {!meal.attributes && (
                 <div> Please select a meal </div>
             )}
-            {meal.attributes && (
+            
+            {meal.attributes && ( 
                 <div>
                     <h2 className="recipe-heading"> {meal.attributes.mealName} </h2>
                     <p className="recipe-text"> Servings: {meal.attributes.servings} </p>
