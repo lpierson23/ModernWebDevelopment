@@ -27,19 +27,20 @@ describe("shopping functionality", () => {
     it("defaults quantity to 1", () => {
         cy.get("#itemName").type("spinach");
         cy.get('button').click();
-        cy.get(".error-messages").should("contain", "itemName can't be blank");
+        cy.on('window:alert',(t)=> {
+            expect(t).to.contains('spinach successfully added to list!');
+        });
+        cy.on('window:confirm', () => true);
+        cy.contains("spinach (1)");
     });
 
-    it("able to submit form", () => {
+    it("able to submit form and see output", () => {
         cy.get("#itemName").type("beans");
-        cy.get("#quantity").type("2").click();
+        cy.get("#quantity").select("2");
         cy.get('button').click();
         cy.on('window:alert',(t)=>{
             expect(t).to.contains('beans successfully added to list!');
         });
-    });
-
-    it("displays list of current grocery items", () => {
         cy.contains("beans (2)");
     });
 });
