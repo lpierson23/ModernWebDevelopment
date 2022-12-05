@@ -6,7 +6,7 @@ describe('protected routing', () => {
   });
   
 describe("shopping functionality", () => {
-    beforeEach(() => {
+    it("can successfully login", () => {
         cy.visit("/auth/login");
         cy.get("#email-input").type("fake@email.com");
         cy.get("#password-input").type("password");
@@ -34,12 +34,6 @@ describe("shopping functionality", () => {
     });
 
     it("displays list of current grocery items", () => {
-        cy.get("#itemName").type("kale");
-        cy.get("#quantity").type("1");
-        cy.get('button').click();
-        cy.on('window:alert',(t)=>{
-            expect(t).to.contains('beans successfully added to list!');
-        });
-        cy.contains("kale (1)");
+        cy.contains("beans (1)");
     });
 });
