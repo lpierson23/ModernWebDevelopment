@@ -15,12 +15,13 @@ describe('protected routing', () => {
   
 describe("shopping functionality", () => {
     beforeEach(() => {
-        preventFormSubmitDefault("form");
         cy.visit("/auth/login");
+        preventFormSubmitDefault("form");
         cy.get("#email-input").type("fake@email.com");
         cy.get("#password-input").type("password");
         cy.get('button').click();
         cy.visit("/shopping");
+        preventFormSubmitDefault("form");
     });
 
     it("contains nav bar", () => {
