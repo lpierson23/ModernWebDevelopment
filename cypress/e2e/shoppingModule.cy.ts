@@ -6,7 +6,7 @@ describe('protected routing', () => {
   });
   
 describe("shopping functionality", () => {
-    it("can successfully login", () => {
+    beforeEach("can successfully login", () => {
         cy.visit("/auth/login");
         cy.get("#email-input").type("fake@email.com");
         cy.get("#password-input").type("password");
