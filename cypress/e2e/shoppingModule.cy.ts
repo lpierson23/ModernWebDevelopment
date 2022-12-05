@@ -21,7 +21,10 @@ describe("shopping functionality", () => {
 
     it("requires grocery item field", () => {
         cy.get('button').click();
-        cy.get(".error-messages").should("contain", "itemName can't be blank");
+        cy.on('window:alert',(t)=> {
+            expect(t).to.contains('Submission must include a grocery name');
+        });
+        cy.on('window:confirm', () => true);
     });
 
     it("defaults quantity to 1", () => {

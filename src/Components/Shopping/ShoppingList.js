@@ -58,8 +58,12 @@ const ShoppingList = () => {
     e.preventDefault();
     // Trigger add flag to create item and
     // re-render list with new item
-    setAdd(true);
-    window.location.reload(false);
+    if (newItem.itemName === ""){
+      alert("Submission must include a grocery name");
+    } else {
+      setAdd(true);
+      window.location.reload(false);
+    }
   };
 
   // Handler to track changes to the child input text
