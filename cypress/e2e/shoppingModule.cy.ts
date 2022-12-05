@@ -29,14 +29,17 @@ describe("shopping functionality", () => {
         cy.get("#quantity").type("1");
         cy.get('button').click();
         cy.on('window:alert',(t)=>{
-        expect(t).to.contains('beans successfully added to list!');
-        })
+            expect(t).to.contains('beans successfully added to list!');
+        });
     });
 
     it("displays list of current grocery items", () => {
         cy.get("#itemName").type("kale");
         cy.get("#quantity").type("1");
         cy.get('button').click();
+        cy.on('window:alert',(t)=>{
+            expect(t).to.contains('beans successfully added to list!');
+        });
         cy.contains("kale (1)");
     });
 });
