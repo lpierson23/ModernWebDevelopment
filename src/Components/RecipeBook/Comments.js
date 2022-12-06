@@ -3,13 +3,17 @@ import { createComment, getAllComments } from "../../Common/Services/LearnServic
 import CommentsForm from "./CommentsForm.js";
 
 const Comments = ({ mealId }) => {
+    // when form input is stored
     const [newComment, setNewComment] = useState({
         rating: 1,
         comment: ""
     });
+    // list of comments from database
     const [comments, setComments] = useState([]);
+    // indicates when to create a new comment with form data
     const [add, setAdd] = useState(false);
 
+    // gets list of comments for a recipe
     useEffect(() => {
         getAllComments(mealId).then((results) => {
             console.log("comments: ", results);
@@ -17,6 +21,7 @@ const Comments = ({ mealId }) => {
         });
     }, []);
 
+    // creates a new comment
     useEffect(() => {
         if (newComment && add) {
             createComment(newComment, mealId).then((commentCreated) => {
@@ -28,6 +33,7 @@ const Comments = ({ mealId }) => {
         }
       }, [newComment, add]);
 
+    // handles form submission
     const onClickHandler = (e) => {
         e.preventDefault();
         // Trigger add flag to create comment and re-render list with new comment
@@ -36,6 +42,7 @@ const Comments = ({ mealId }) => {
         window.location.reload(false);
     };
 
+    // handles any input change on form
     const onChangeHandler = (e) => {
         e.preventDefault();
         const { name, value: newValue } = e.target;
@@ -48,6 +55,7 @@ const Comments = ({ mealId }) => {
         console.log("onChange:", newValue);
     };
 
+    // compute the average recipe rating based on comments
     const averageRating = (comments) => {
         var total = 0;
         var count = 0;

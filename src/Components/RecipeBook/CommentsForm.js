@@ -1,6 +1,7 @@
 import React, { useState, useCallback }from "react";
 
 const CommentsForm = ({ onClick, onChange }) => {
+    // forces reload on submission so comments appear
     const [, updateState] = useState();
     const forceUpdate = useCallback(() => updateState({}), []);
 
