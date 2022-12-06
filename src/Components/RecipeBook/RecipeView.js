@@ -5,12 +5,11 @@ import Comments from "./Comments.js";
 const RecipeView = ({ mealId }) => {
     const [meal, setMeal] = useState({});
 
+    // gets a specific meal from database to display details
     useEffect(() => {
         if (mealId) {
             getMealById(mealId).then((object) => {
                 const image = object.get("image");
-                console.log("image: ", image);
-                console.log("image url: ", image._url);
                 setMeal(object);
             });
         }
