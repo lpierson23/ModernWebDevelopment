@@ -10,7 +10,7 @@ const ShoppingForm = ({ onChange, onClick }) => {
         <hr />
 
         <label htmlFor="itemName">
-          <b>Grocery Item</b>
+          <b>Grocery Item </b>
         </label>
         <input
           type="text"
@@ -25,7 +25,7 @@ const ShoppingForm = ({ onChange, onClick }) => {
         <br />
 
         <label htmlFor="quantity">
-          <b>Quantity</b>
+          <b>Quantity </b>
         </label>
         <select
           name="quantity"
@@ -43,7 +43,7 @@ const ShoppingForm = ({ onChange, onClick }) => {
         <br />
         <br />
 
-        <button type="submit" onClick={onClick}>
+        <button className="button" type="submit" onClick={onClick}>
           Submit
         </button>
       </form>

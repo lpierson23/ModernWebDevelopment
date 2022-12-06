@@ -4,7 +4,9 @@ import Parse from "parse";
 // Read operation for groceries
 export const getAllGroceries = () => {
   const Item = Parse.Object.extend("Groceries");
+  const User = Parse.User.current();
   const query = new Parse.Query(Item);
+  query.equalTo("household", User.get("household"));
   return query.find().then((results) => {
     // returns array of item objects
     console.log("results: ", results);
@@ -15,11 +17,13 @@ export const getAllGroceries = () => {
 // Create operation for groceries
 export const createItem = (newItem) => {
   console.log("Creating: ", newItem);
+  const User = Parse.User.current();
   const Item = Parse.Object.extend("Groceries");
   const item = new Item();
   // using setter to UPDATE the object
   item.set("itemName", newItem.itemName);
   item.set("quantity", newItem.quantity);
+  item.set("household", User.get("household"))
   return item.save().then((result) => {
     // returns new Lesson object
     return result;
@@ -38,7 +42,9 @@ export const removeItem = (id) => {
 // Read operation for meals
 export const getAllMeals = () => {
   const Item = Parse.Object.extend("Meals");
+  const User = Parse.User.current();
   const query = new Parse.Query(Item);
+  query.equalTo("household", User.get("household"))
   return query.find().then((results) => {
     // returns array of item objects
     console.log("results: ", results);
@@ -59,11 +65,13 @@ export const getMealById = (id) => {
 // Create operation for meals
 export const createMeal = (newMeal) => {
   console.log("Creating: ", newMeal.mealName);
+  const User = Parse.User.current();
   const Item = Parse.Object.extend("Meals");
   const item = new Item();
   // using setter to UPDATE the object
   item.set("mealName", newMeal.mealName);
   item.set("servings", Number(newMeal.servings));
+  item.set("household", User.get("household"))
   item.set("url", newMeal.recipe)
   return item.save().then((result) => {
     // returns new Lesson object
@@ -83,7 +91,9 @@ export const removeMeals = (id) => {
 // Read operation for calendar
 export const getFullCalendar = () => {
   const Item = Parse.Object.extend("Calendar");
+  const User = Parse.User.current();
   const query = new Parse.Query(Item);
+  query.equalTo("household", User.get("household"))
   return query.find().then((results) => {
     // returns array of item objects
     console.log("results: ", results);
@@ -157,9 +167,11 @@ export const createUser = (newUser) => {
   console.log("Creating: ", newUser.username);
   const user = new Parse.User();
   // using setter to UPDATE the object
-  user.set("userame", newUser.username);
+  user.set("username", newUser.username);
   user.set("email", newUser.email);
-  user.set("password", newUser.password)
+  user.set("password", newUser.password);
+  user.set("pinterestUsername", newUser.pinterestUsername);
+  user.set("boardName", newUser.boardName);
   return user.signUp().then((result) => {
     // returns new Lesson object
     return result;
