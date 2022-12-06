@@ -46,6 +46,16 @@ export const getAllMeals = () => {
   });
 };
 
+export const getMealById = (id) => {
+  const Item = Parse.Object.extend("Meals");
+  const query = new Parse.Query(Item);
+  return query.get(id).then((object) => {
+    // returns array of item objects
+    console.log("meal: ", object);
+    return object;
+  });
+};
+
 // Create operation for meals
 export const createMeal = (newMeal) => {
   console.log("Creating: ", newMeal.mealName);
@@ -54,7 +64,7 @@ export const createMeal = (newMeal) => {
   // using setter to UPDATE the object
   item.set("mealName", newMeal.mealName);
   item.set("servings", Number(newMeal.servings));
-  item.set("recipe", newMeal.recipe)
+  item.set("url", newMeal.recipe)
   return item.save().then((result) => {
     // returns new Lesson object
     return result;
@@ -162,5 +172,33 @@ export const removeUser = (id) => {
   const query = new Parse.Query(Item);
   return query.get(id).then((item) => {
     item.destroy();
+  });
+};
+
+
+// Create operation for comments
+export const createComment = (newComment, mealId) => {
+  console.log("Creating comment for ", mealId);
+  const Item = Parse.Object.extend("Comments");
+  const item = new Item();
+  // using setter to UPDATE the object
+  item.set("rating", newComment.rating);
+  item.set("comment", newComment.comment);
+  item.set("mealId", mealId)
+  return item.save().then((result) => {
+    // returns new Lesson object
+    return result;
+  });
+};
+
+// Read operation for comments
+export const getAllComments = (mealId) => {
+  const Item = Parse.Object.extend("Comments");
+  const query = new Parse.Query(Item);
+  query.equalTo('mealId', mealId);
+  return query.find().then((object) => {
+    // returns array of item objects
+    console.log("comments: ", object);
+    return object;
   });
 };
