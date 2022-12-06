@@ -4,10 +4,40 @@ const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
 
   return (
     <form onSubmit={onSubmit} autoComplete="off">
+    <div>
+      <div>
+        <div className="form-group">
+          <label>Email </label>
+          <br />
+          <input
+            type="email"
+            className="form-control"
+            id="email-input"
+            value={user.email}
+            onChange={onChange}
+            name="email"
+            required
+          />
+        </div>{" "}
+        <div className="form-group">
+          <label>Password </label>
+          <br />
+          <input
+            type="password"
+            className="form-control"
+            id="password-input"
+            value={user.password}
+            onChange={onChange}
+            name="password"
+            min="0"
+            required
+          />
+        </div>
+    </div>
     {!isLogin ?  /* if user is registering, ask for name */
     <div>
         <div className="form-group">
-          <label>First Name</label>
+          <label>First Name </label>
           <br />
           <input
             type="text"
@@ -21,7 +51,7 @@ const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
           />
         </div>
         <div className="form-group">
-          <label>Last Name</label>
+          <label>Last Name </label>
           <br />
           <input
             type="text"
@@ -32,38 +62,24 @@ const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
             name="lastName"
             required
           />
-        </div>{" "}
-        </div> : <></>}
-        <div>
+        </div>
         <div className="form-group">
-          <label>Email</label>
+          <label>Household Name </label>
           <br />
           <input
-            type="email"
+            type="text"
             className="form-control"
-            id="email-input"
-            value={user.email}
+            id="household-input"
+            value={user.household}
             onChange={onChange}
-            name="email"
-            required
-          />
-        </div>{" "}
-        <div className="form-group">
-          <label>Password</label>
-          <br />
-          <input
-            type="password"
-            className="form-control"
-            id="password-input"
-            value={user.password}
-            onChange={onChange}
-            name="password"
-            min="0"
+            name="household"
+            placeholder="household"
             required
           />
         </div>
+        </div> : <></>}
         <div className="form-group">
-          <button type="submit" className="btn btn-primary" onSubmit={onSubmit}>
+          <button className="button" type="submit" onSubmit={onSubmit}>
             Submit
           </button>
         </div>

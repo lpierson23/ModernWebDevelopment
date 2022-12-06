@@ -12,7 +12,7 @@ const RequestsList = () => {
   const [newMeal, setNewMeal] = useState({
     mealName: "",
     servings: "",
-    recipe: undefined
+    url: ""
   });
 
   // Variables in the state to hold data

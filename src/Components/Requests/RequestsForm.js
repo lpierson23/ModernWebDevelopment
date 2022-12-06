@@ -10,7 +10,7 @@ const RequestsForm = ({ onChange, onClick }) => {
         <hr />
         <div>
           <label htmlFor="mealName">
-            <b>Meal name</b>
+            <b>Meal name </b>
           </label>
           <input
             type="text"
@@ -25,7 +25,7 @@ const RequestsForm = ({ onChange, onClick }) => {
           <br />
 
           <label htmlFor="servings">
-            <b>Servings</b>
+            <b>Servings </b>
           </label>
           <input
             type="text"
@@ -39,18 +39,18 @@ const RequestsForm = ({ onChange, onClick }) => {
           <br />
           <br />
 
-          <label htmlFor="recipe">
-            <b>Recipe</b>
+          <label htmlFor="url">
+            <b>Recipe </b>
           </label>
           <input
             type="url"
             onChange={onChange}
-            placeholder="Enter url"
+            placeholder="Enter URL"
             name="recipe"
             id="recipe"
-          />
-
-          <button type="submit" onClick={onClick}>Submit</button>
+          />          
+    
+          <button className="button" type="submit" onClick={onClick}>Submit</button>
         </div>
       </form>
     </div>
