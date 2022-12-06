@@ -142,6 +142,106 @@ table {
   background: #bcd3dd;
 }
 
+.recipe-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 300px auto;
+}
+
+.recipe-sidebar-list {
+  padding: 0;
+  margin: 0;
+}
+
+.recipe-sidebar-title {
+  color: #152039;
+  background-color: #bcd3dd;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  text-align: "left";
+  padding: 5px 10px 5px 10px;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
+}
+
+.recipe-sidebar-item {
+  background-color: #bcd3dd;
+  text-align: "left";
+  padding: 5px 10px 5px 10px;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
+  padding: 0;
+}
+
+.recipe-sidebar-item:first-child {
+  border-top: 1px solid white;
+}
+
+.recipe-sidebar-item:hover {
+  background-color: #152039;
+  color: white;
+}
+
+.recipe-sidebar-link {
+  color: #152039;
+  font-family: "Montserrat", sans-serif;
+  text-decoration: none;
+  text-align: center;
+  line-height: 27px;
+  display: block;
+  width: 300px;
+  height: 27px;
+}
+
+.recipe-sidebar-link:hover {
+  color: white;
+}
+
+.recipe {
+  margin: 0px 20px 0px 20px;
+}
+
+.recipe-heading {
+  font-family: "Montserrat", sans-serif;
+  color: #152039;
+  background-color: #ffffff;
+  text-align: left;
+  margin: 0;
+}
+
+.recipe-text {
+  text-align: left;
+}
+
+.comments-form {
+  text-align: left;
+}
+
+.comments-form-text {
+  font-family: "Montserrat", sans-serif;
+  color: #152039;
+  text-align: left;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.comments-text {
+  font-family: "Montserrat", sans-serif;
+  color: #152039;
+  text-align: left;
+}
+
+.comments-list {
+  margin-top: 0px;
+  margin-bottom: 16px;
+}
+
+.rating { 
+  margin: 5px;
+}
+
 /* media query styles are only applied if the conditions are met */
 @media all and (max-width: 800px) {
   .navigation {

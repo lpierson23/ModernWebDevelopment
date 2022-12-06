@@ -36,7 +36,6 @@ const AuthRegister = () => {
           );
           navigate("/");
         }
-        // TODO: redirect user to main app
         setAdd(false);
       });
     }

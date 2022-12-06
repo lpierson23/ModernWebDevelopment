@@ -43,16 +43,13 @@ const RequestsForm = ({ onChange, onClick }) => {
             <b>Recipe </b>
           </label>
           <input
-            type="text"
+            type="url"
             onChange={onChange}
-            placeholder="Recipe URL"
-            name="url"
-            id="url"
-          />
-          
-          <br />
-          <br />
-
+            placeholder="Enter URL"
+            name="recipe"
+            id="recipe"
+          />          
+    
           <button className="button" type="submit" onClick={onClick}>Submit</button>
         </div>
       </form>

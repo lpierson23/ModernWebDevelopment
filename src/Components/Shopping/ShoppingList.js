@@ -27,7 +27,7 @@ const ShoppingList = () => {
       console.log("items: ", results);
       setItems(results);
     });
-  }, [items]);
+  }, []);
 
   useEffect(() => {
     if (newItem && add) {
@@ -35,7 +35,6 @@ const ShoppingList = () => {
         if (itemCreated) {
           alert(`${itemCreated.get("itemName")} successfully added to list!`);
         }
-        // TODO: redirect user to main app
         setAdd(false);
       });
     }
@@ -46,7 +45,12 @@ const ShoppingList = () => {
     e.preventDefault();
     // Trigger add flag to create item and
     // re-render list with new item
-    setAdd(true);
+    if (newItem.itemName === ""){
+      alert("Submission must include a grocery name");
+    } else {
+      setAdd(true);
+      window.location.reload(false);
+    }
   };
 
   // Handler to track changes to the child input text
@@ -75,7 +79,7 @@ const ShoppingList = () => {
         <h3>Shopping List</h3>
         {/* prints all items from Groceries database */}
         {items.length > 0 && (
-          <ul>
+          <ul id="shoppingList">
             {items.map((item) => (
               <li key={item.id}> 
               {item.get("itemName")} 

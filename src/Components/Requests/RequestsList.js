@@ -28,7 +28,7 @@ const RequestsList = () => {
       console.log("meals: ", results);
       setMeals(results);
     });
-  }, [meals]);
+  }, []);
 
   useEffect(() => {
     console.log("in useEffect");
@@ -38,7 +38,6 @@ const RequestsList = () => {
         if (mealCreated) {
           alert(`${mealCreated.get("mealName")} successfully added to list!`);
         }
-        // TODO: redirect user to main app
         setAdd(false);
       });
     }
@@ -64,6 +63,7 @@ const RequestsList = () => {
     // Trigger add flag to create meal and
     // re-render list with new meal
     setAdd(true);
+    window.location.reload(false);
   };
 
   // Handler to track changes to the child input text
@@ -101,8 +101,7 @@ const RequestsList = () => {
           <ul>
             {meals.map((meal) => (
               <li key={meal.id}>
-                {meal.get("mealName")} (servings: {meal.get("servings")}),{" "}
-                {meal.get("url")}
+                <a href={meal.get("url")} target="_blank" rel="noopener noreferrer">{meal.get("mealName")}</a> (servings: {meal.get("servings")})
               </li>
             ))}
           </ul>
