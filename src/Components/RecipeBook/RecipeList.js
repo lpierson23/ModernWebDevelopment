@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const RecipeList = () => {
     const [recipes, setRecipes] = useState([]);
 
-    // todo: update to tie to a specific user
+    // gets list of meals for a user from database
     useEffect(() => {
         getAllMeals().then((results) => {
             console.log("recipes: ", results);

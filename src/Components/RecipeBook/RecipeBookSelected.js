@@ -5,6 +5,7 @@ import RecipeView from "./RecipeView.js";
 import { useParams } from "react-router-dom";
 
 const RecipeBookSelected = () => {
+    // gets meal id from url
     var params = useParams();
     var mealId = params.mealId;
 
