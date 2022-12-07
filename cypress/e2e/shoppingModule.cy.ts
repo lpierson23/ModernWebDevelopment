@@ -34,7 +34,7 @@ describe("shopping functionality", () => {
             expect(t).to.contains('spinach successfully added to list!');
         });
         cy.on('window:confirm', () => true);
-        cy.contains("spinach (1)");
+        cy.contains("spinach(1)");
     });
 
     it("able to submit form and see output", () => {
@@ -44,6 +44,6 @@ describe("shopping functionality", () => {
         cy.on('window:alert',(t)=>{
             expect(t).to.contains('beans successfully added to list!');
         });
-        cy.contains("beans (2)");
+        cy.contains("beans(2)");
     });
 });
