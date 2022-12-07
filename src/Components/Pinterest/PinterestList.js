@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from "react";
-import {getPinsFromDatabase, createPin, getAllPins, editUserPinterest, notLinked} from "./PinterestService.js";
+import {addToRecipeBook, getPinsFromDatabase, createPin, getAllPins, editUserPinterest, isLinked} from "./PinterestService.js";
 import PinterestAccountForm from "./PinterestAccountForm.js";
 import PinterestPinsForm from "./PinterestPinsForm.js";
 
-const PinterestList = ({ notLinked, onChange, onSubmit }) => {
+const PinterestList = ({ isLinked, onChange, onSubmit }) => {
   const [newPinterest, setNewPinterest] = useState({
     pinterestUsername: "",
     boardName: ""
   });
 
   const [newPin, setNewPin] = useState({
+    pinterestUsername: "",
+    gridTitle: "",
+    link: "",
+    imageLink: "",
+    boardName: ""
+  });
+
+  const [recipePin, setRecipePin] = useState({
     pinterestUsername: "",
     gridTitle: "",
     link: "",
@@ -22,6 +30,9 @@ const PinterestList = ({ notLinked, onChange, onSubmit }) => {
   const [getPins, setGetPins] = useState(false);
   // Flags in the state to watch for add/remove updates
   const [add, setAdd] = useState(false);
+  const [addToRecipe, setAddToRecipe] = useState(false);
+  // const [loading, setLoading] = useState(false)
+
 
   useEffect(() => {
     if (newPinterest && add) {
@@ -39,20 +50,18 @@ const PinterestList = ({ notLinked, onChange, onSubmit }) => {
       console.log("in use effect")
       getAllPins().then((results) => {
         setPins(results);
-        console.log("after getting pins")
-        console.log("pins: ", results);
+        console.log("after getting pins");
         setGetPins(false);
       });
     }
+    // setLoading(false)
   }, [getPins, pins]);
 
   useEffect(() => {
     getPinsFromDatabase().then((results) => {
-      console.log("items: ", results);
       setDatabasePins(results);
     });
   }, [databasePins]);
-
 
   // Handler to handle event passed from child submit button
   const onClickHandler = (e) => {
@@ -60,6 +69,7 @@ const PinterestList = ({ notLinked, onChange, onSubmit }) => {
     // Trigger add flag to create item and
     // re-render list with new item
     setAdd(true);
+    // setLoading(true)
   };
 
   // // Handler to track changes to the child input text
@@ -82,31 +92,55 @@ const PinterestList = ({ notLinked, onChange, onSubmit }) => {
       setGetPins(true);
     };
 
-    const formattedPins = databasePins.map(function (databasePin) {
-      return <a href={databasePin.get("link")} target="_blank"><div className="masonry-item" key={databasePin.id}>
+    const buttonText = databasePins.map(function (databasePin, index) {
+      return "Add to Recipe Book"
+    });
+
+    const onRecipeClickHandler = (e) => {
+      e.preventDefault();
+      console.log("Add pin to recipe book")
+      var buttonIndex = e.target.id
+      console.log(e.target.name)
+      console.log(buttonIndex)
+      console.log(buttonText[buttonIndex])
+      buttonText[buttonIndex] = 'Added to Recipe Book';
+      console.log(buttonText[buttonIndex])
+
+      addToRecipeBook(e.target.name).then((pinAddedToRecipeBook) => {
+        if (pinAddedToRecipeBook) {
+          alert(`Successfully added pin to Recipe Book!`);
+        }
+      });
+    };
+
+    const formattedPins = databasePins.map(function (databasePin, index) {
+      return <div><a href={databasePin.get("link")} target="_blank"><div className="masonry-item" key={databasePin.id}>
         <img src={databasePin.get("imageLink")} />
         <blockquote className = "masonry-title">{databasePin.get("gridTitle")}</blockquote>
-      </div></a>;
+        <button id = {index} name = {databasePin.get("gridTitle")} className="button" onClick = {onRecipeClickHandler} type="submit">{buttonText[index]}</button>
+      </div></a></div>;
     });
+
+
 
   return (
     <div>
-    {notLinked ?
+    {isLinked ?
       <div>
-        <PinterestAccountForm
-          onClick={onClickHandler}
-          onChange={onChangeHandler}
-          pinterest={newPinterest}
-        />
+      <PinterestAccountForm
+        onClick={onClickHandler}
+        onChange={onChangeHandler}
+        pinterest={newPinterest}
+      />
       </div>
-    : 
+      :
       <div>
         <hr />
         <h3>Recent Pins</h3>
 
         <br />
 
-        <div class="masonry-container">
+        <div className="masonry-container">
           {formattedPins}
         </div>
         <br />
@@ -116,7 +150,8 @@ const PinterestList = ({ notLinked, onChange, onSubmit }) => {
         />
         </div>
         
-      </div>}
+      </div> 
+      }
       </div>
   );
 };
