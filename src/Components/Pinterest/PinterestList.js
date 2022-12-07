@@ -99,13 +99,7 @@ const PinterestList = ({ isLinked, onChange, onSubmit }) => {
     const onRecipeClickHandler = (e) => {
       e.preventDefault();
       console.log("Add pin to recipe book")
-      var buttonIndex = e.target.id
-      console.log(e.target.name)
-      console.log(buttonIndex)
-      console.log(buttonText[buttonIndex])
-      buttonText[buttonIndex] = 'Added to Recipe Book';
-      console.log(buttonText[buttonIndex])
-
+   
       addToRecipeBook(e.target.name).then((pinAddedToRecipeBook) => {
         if (pinAddedToRecipeBook) {
           alert(`Successfully added pin to Recipe Book!`);

@@ -49,13 +49,14 @@ export const addToRecipeBook = (pinTitle) => {
                     meal.set("servings", Number("--"));
                     meal.set("household", User.get("household"))
                     meal.set("url", pin.get("link"))
-                    // meal.set("image", file)
+                    meal.set("image", pin.get("imageLink"))
                     return meal.save().then((result) => {
                     // returns new Pin object
                         return result;
                     });
                 }else {
                     console.log("Pin already in Recipe Book");
+                    alert(`Pin already in Recipe Book`);
                     return
                 }
             });
