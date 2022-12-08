@@ -4,6 +4,7 @@ import Parse from "parse";
 import { createMeal } from "./../../Common/Services/LearnServices.js";
 
 //Create operation for pins
+// Adds pin to the Pin database
 export const createPin = (newPin) => {
     console.log("Creating: ", newPin.gridTitle);
     const Pin = Parse.Object.extend("Pins");
@@ -20,11 +21,13 @@ export const createPin = (newPin) => {
     });
 };
 
+// adds pin to the meal database if not already in meals
 export const addToRecipeBook = (pinTitle) => {
     const User = Parse.User.current();
     const Pin = Parse.Object.extend("Pins");
     const query = new Parse.Query(Pin);
 
+    // confirms that the pin exists
     query.equalTo("gridTitle", pinTitle)
     return query.find().then((results) => {
         console.log("after query")
@@ -39,6 +42,7 @@ export const addToRecipeBook = (pinTitle) => {
             const meal = new Meal();
             const query = new Parse.Query(Meal);
 
+            // confirms that the pin is not already in meals
             query.equalTo("mealName", pin.get("gridTitle"))
             return query.find().then((results) => {
                 if (results.length == 0){
@@ -64,6 +68,8 @@ export const addToRecipeBook = (pinTitle) => {
     });
 };
 
+// function checks id pin is already in the Pins database
+// used to eliminate duplicates when user loads more pins
 export const addPin = async (newPin) => {
     console.log("Checking if pin already present")
     console.log(newPin.gridTitle)
@@ -84,6 +90,7 @@ export const addPin = async (newPin) => {
     });
 }
 
+// reads pins from Pins database
 export const getPinsFromDatabase = () => {
     const Pin = Parse.Object.extend("Pins");
     const User = Parse.User.current();
@@ -95,6 +102,7 @@ export const getPinsFromDatabase = () => {
     });
   };
 
+// gets new pins from linked pinterest
 export const getAllPins = async () => {
     const User = Parse.User.current();
     var username = User.get("username");
@@ -102,6 +110,7 @@ export const getAllPins = async () => {
     const account = new Account();
     const query = new Parse.Query(Account);
     
+    // confirms the user has linked their pinterest account
     query.equalTo("username", username);
     return query.first().then(function(result){
         if(result){
@@ -116,6 +125,8 @@ export const getAllPins = async () => {
             boardName = boardName.replaceAll("-", "");
             boardName = boardName.replaceAll(" ", "-");
 
+            // utilizes apify Pinterest scraper
+            // formatting input data and the url for the scraper to start at 
             const url = "https://api.apify.com/v2/acts/alexey~pinterest-crawler/run-sync-get-dataset-items?token=apify_api_e9OxTOaOz565aecU3fSDVWvfgPM0ST1fn0JB";
             const startUrl = "https://www.pinterest.com/" + pinterestUsername + "/" + boardName + "/";
             const pinCount = 10;
@@ -138,9 +149,12 @@ export const getAllPins = async () => {
                     console.log(response.data[i]["board"]["name"])
                     console.log(boardName)
                     console.log(originalBoardName)
+                    // eliminates error of returning pins from different boards
                     if (response.data[i]["board"]["name"] != originalBoardName) {
                         continue
                     }
+
+                    // constructs a "pin" with only the necessary data
                     const pin = {};
                     pin["username"] = username;
                     pin["gridTitle"] = response.data[i]["grid_title"];
@@ -155,6 +169,7 @@ export const getAllPins = async () => {
                     const Pin = Parse.Object.extend("Pins");
                     const query = new Parse.Query(Pin);
 
+                    // checking to see if pin is already in the database to eliminate duplicates
                     query.equalTo("gridTitle", pin.gridTitle)
                     query.find().then((results) => {
                         console.log("after query")
@@ -162,6 +177,7 @@ export const getAllPins = async () => {
                         if (results.length == 0){
                             pins.push(pin);
 
+                            // create new pin if not in database
                             const Pin = Parse.Object.extend("Pins");
                             const newPin = new Pin();
                             const query = new Parse.Query(Pin);
@@ -189,6 +205,7 @@ export const getAllPins = async () => {
     });
 };
 
+// check function to make sure user has linked pinterest account
 export const isLinked = async () => {
     const User = Parse.User.current();
     var username = User.get("username");
@@ -207,6 +224,7 @@ export const isLinked = async () => {
     } 
 };
 
+// links pinterest account to meal planner
 export const editUserPinterest = async (userPinterest) => {
     const User = Parse.User.current();
     var username = User.get("username");

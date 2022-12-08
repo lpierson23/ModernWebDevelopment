@@ -4,6 +4,7 @@ import PinterestAccountForm from "./PinterestAccountForm.js";
 import PinterestPinsForm from "./PinterestPinsForm.js";
 
 const PinterestList = ({ isLinked, onChange, onSubmit }) => {
+  // pinterest account values
   const [newPinterest, setNewPinterest] = useState({
     pinterestUsername: "",
     boardName: ""
@@ -27,13 +28,13 @@ const PinterestList = ({ isLinked, onChange, onSubmit }) => {
   // Variables in the state to hold data
   const [pins, setPins] = useState([]);
   const [databasePins, setDatabasePins] = useState([]);
+    // Flags in the state to watch for add/remove updates
   const [getPins, setGetPins] = useState(false);
-  // Flags in the state to watch for add/remove updates
   const [add, setAdd] = useState(false);
   const [addToRecipe, setAddToRecipe] = useState(false);
-  // const [loading, setLoading] = useState(false)
 
 
+  // link pinterest
   useEffect(() => {
     if (newPinterest && add) {
       editUserPinterest(newPinterest).then((pinterestUpdated) => {
@@ -45,6 +46,7 @@ const PinterestList = ({ isLinked, onChange, onSubmit }) => {
     }
   }, [newPinterest, add]);
 
+  // get pins from the scraper after button press
   useEffect(() => {
     if(getPins){
       console.log("in use effect")
@@ -54,25 +56,22 @@ const PinterestList = ({ isLinked, onChange, onSubmit }) => {
         setGetPins(false);
       });
     }
-    // setLoading(false)
   }, [getPins, pins]);
 
+  // get pins from database automatically
   useEffect(() => {
     getPinsFromDatabase().then((results) => {
       setDatabasePins(results);
     });
   }, [databasePins]);
 
-  // Handler to handle event passed from child submit button
+  // Submit button for linking pinterest account
   const onClickHandler = (e) => {
     e.preventDefault();
-    // Trigger add flag to create item and
-    // re-render list with new item
     setAdd(true);
-    // setLoading(true)
   };
 
-  // // Handler to track changes to the child input text
+  // // Handler to track changes for linking pinterest account
   const onChangeHandler = (e) => {
     e.preventDefault();
     const { name, value: newValue } = e.target;
@@ -85,17 +84,15 @@ const PinterestList = ({ isLinked, onChange, onSubmit }) => {
     console.log("onChange:", newValue);
   };
 
-    // Handler to handle event passed from child submit button
+    // Handler to get pins from the scraper on button press
     const onLoadClickHandler = (e) => {
       e.preventDefault();
       console.log("Loading pins")
       setGetPins(true);
     };
 
-    const buttonText = databasePins.map(function (databasePin, index) {
-      return "Add to Recipe Book"
-    });
-
+    // add to recipe book button handler
+    // button determined by id (index)
     const onRecipeClickHandler = (e) => {
       e.preventDefault();
       console.log("Add pin to recipe book")
@@ -107,16 +104,18 @@ const PinterestList = ({ isLinked, onChange, onSubmit }) => {
       });
     };
 
+    // generates masonry formatted output of pins 
     const formattedPins = databasePins.map(function (databasePin, index) {
       return <div><a href={databasePin.get("link")} target="_blank"><div className="masonry-item" key={databasePin.id}>
         <img src={databasePin.get("imageLink")} />
         <blockquote className = "masonry-title">{databasePin.get("gridTitle")}</blockquote>
-        <button id = {index} name = {databasePin.get("gridTitle")} className="button" onClick = {onRecipeClickHandler} type="submit">{buttonText[index]}</button>
+        <button id = {index} name = {databasePin.get("gridTitle")} className="button" onClick = {onRecipeClickHandler} type="submit">Add to Recipe Book</button>
       </div></a></div>;
     });
 
 
 
+  // If user has not already linked account, render pinterest account form, else render pin layout with load pins button
   return (
     <div>
     {isLinked ?
