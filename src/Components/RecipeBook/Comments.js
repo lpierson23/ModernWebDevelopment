@@ -5,7 +5,7 @@ import CommentsForm from "./CommentsForm.js";
 const Comments = ({ mealId }) => {
     // when form input is stored
     const [newComment, setNewComment] = useState({
-        rating: 1,
+        rating: "2.5",
         comment: ""
     });
     // list of comments from database

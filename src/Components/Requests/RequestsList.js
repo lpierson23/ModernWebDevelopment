@@ -11,7 +11,7 @@ import RequestsForm from "./RequestsForm";
 const RequestsList = () => {
   const [newMeal, setNewMeal] = useState({
     mealName: "",
-    servings: "",
+    servings: "1",
     url: ""
   });
 
