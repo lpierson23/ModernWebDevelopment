@@ -11,7 +11,7 @@ import ShoppingForm from "./ShoppingForm";
 const ShoppingList = () => {
   const [newItem, setNewItem] = useState({
     itemName: "",
-    quantity: "1"
+    quantity: 1
   });
 
   // Variables in the state to hold data

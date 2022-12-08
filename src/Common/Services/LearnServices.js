@@ -22,7 +22,7 @@ export const createItem = (newItem) => {
   const item = new Item();
   // using setter to UPDATE the object
   item.set("itemName", newItem.itemName);
-  item.set("quantity", newItem.quantity);
+  item.set("quantity", Number(newItem.quantity));
   item.set("household", User.get("household"))
   return item.save().then((result) => {
     // returns new Lesson object
@@ -70,7 +70,7 @@ export const createMeal = (newMeal) => {
   const item = new Item();
   // using setter to UPDATE the object
   item.set("mealName", newMeal.mealName);
-  item.set("servings", Number(newMeal.servings));
+  item.set("servings", newMeal.servings);
   item.set("household", User.get("household"))
   item.set("url", newMeal.recipe)
   return item.save().then((result) => {

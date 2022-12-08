@@ -8,7 +8,7 @@ describe('protected routing', () => {
 describe("shopping functionality", () => {
     beforeEach("can successfully login", () => {
         cy.visit("/auth/login");
-        cy.get("#email-input").type("fake@email.com");
+        cy.get("#email-input").type("ojohnso2@nd.edu");
         cy.get("#password-input").type("password");
         cy.get('button').click();
         cy.wait(1500);
