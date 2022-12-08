@@ -201,6 +201,7 @@ export const getAllPins = async () => {
         
         } else {
             console.log("There is no Pinterest account associated with this account");
+            alert(`There is no Pinterest account associated with this account. Please link before getting pins`);
         }
     });
 };
@@ -231,19 +232,14 @@ export const editUserPinterest = async (userPinterest) => {
     const Account = Parse.Object.extend("Pinterest");
     const account = new Account();
 
-    if (isLinked() == false){
-        // using setter to UPDATE the object
-        console.log("Linking to Pinterest account");
-        account.set("username", username);
-        account.set("pinterestUsername", userPinterest.pinterestUsername);
-        account.set("boardName", userPinterest.boardName);
-        return account.save().then((result) => {
-            // returns new Account object
-            return result;
-        });
-    } else {
-        console.log("Account already linked to Pinterest.")
-        alert(`Account already linked to Pinterest.`);
-    }
+    // using setter to UPDATE the object
+    console.log("Linking to Pinterest account");
+    account.set("username", username);
+    account.set("pinterestUsername", userPinterest.pinterestUsername);
+    account.set("boardName", userPinterest.boardName);
+    return account.save().then((result) => {
+        // returns new Account object
+        return result;
+    });
 };
 

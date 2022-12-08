@@ -61,7 +61,10 @@ const PinterestList = ({ isLinked, onChange, onSubmit }) => {
   // get pins from database automatically
   useEffect(() => {
     getPinsFromDatabase().then((results) => {
-      setDatabasePins(results);
+        setDatabasePins(results);
+      })
+      .catch((err) => {
+        console.log("error getting pins")
     });
   }, [databasePins]);
 
@@ -106,7 +109,7 @@ const PinterestList = ({ isLinked, onChange, onSubmit }) => {
 
     // generates masonry formatted output of pins 
     const formattedPins = databasePins.map(function (databasePin, index) {
-      return <div><a href={databasePin.get("link")} target="_blank"><div className="masonry-item" key={databasePin.id}>
+      return <div key={databasePin.get("gridTitle")}><a href={databasePin.get("link")} target="_blank"><div className="masonry-item" key={databasePin.id}>
         <img src={databasePin.get("imageLink")} />
         <blockquote className = "masonry-title">{databasePin.get("gridTitle")}</blockquote>
         <button id = {index} name = {databasePin.get("gridTitle")} className="button" onClick = {onRecipeClickHandler} type="submit">Add to Recipe Book</button>
@@ -118,7 +121,6 @@ const PinterestList = ({ isLinked, onChange, onSubmit }) => {
   // If user has not already linked account, render pinterest account form, else render pin layout with load pins button
   return (
     <div>
-    {isLinked ?
       <div>
       <PinterestAccountForm
         onClick={onClickHandler}
@@ -126,7 +128,6 @@ const PinterestList = ({ isLinked, onChange, onSubmit }) => {
         pinterest={newPinterest}
       />
       </div>
-      :
       <div>
         <hr />
         <h3>Recent Pins</h3>
@@ -144,7 +145,6 @@ const PinterestList = ({ isLinked, onChange, onSubmit }) => {
         </div>
         
       </div> 
-      }
       </div>
   );
 };
