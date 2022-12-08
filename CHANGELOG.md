@@ -41,6 +41,13 @@
     - ability to leave comments on and rate a recipe
     - displays the average user rating and all submitted comments
 - Cypress unit testing for the shopping module
+- Pinterest module
+    - form for user to enter their Pinterest user name and the board that they want to search from
+    - ability to load in pins from the designated board
+    - pins have the image from the Pinterest version, the same title as the Pinterest version, and link to the pin recipe
+    - ability to add "pins" to the recipe book
+- household feature
+    - allows all members of the same household to have access to the same meals, calendar, recipe book, and shopping list
 
 ### Changed
 - Routing
