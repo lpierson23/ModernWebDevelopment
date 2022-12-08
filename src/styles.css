@@ -73,6 +73,7 @@ table {
   color: #152039;
 }
 
+/* masonry classes format the layout of pins on Pinterest page to mimic pinterest */
 .masonry-container {
   -webkit-column-count: 3;
   -moz-column-count: 3;
